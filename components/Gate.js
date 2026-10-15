@@ -1,0 +1,76 @@
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { PROFILE_IMAGE, WA_CHANNEL, YT_CHANNEL } from '../lib/config';
+
+export default function Gate() {
+  const [visible, setVisible] = useState(false);
+  const [notice, setNotice] = useState('');
+  const stateRef = useRef({ wa: false, yt: false });
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (document.cookie.includes('pto_followed=1')) return;
+    let s = { wa: false, yt: false };
+    try { s = JSON.parse(localStorage.getItem('pto_gate') || '{}'); } catch (e) {}
+    stateRef.current = { wa: !!s.wa, yt: !!s.yt };
+    setVisible(true);
+    document.documentElement.style.overflow = 'hidden';
+    verify();
+  }, []);
+
+  function verify() {
+    const s = stateRef.current;
+    if (s.wa && s.yt) {
+      document.cookie = 'pto_followed=1;path=/;max-age=' + 60 * 60 * 24 * 365;
+      setNotice('Verified. Welcome to PROGRESS TECH.');
+      setTimeout(() => {
+        setVisible(false);
+        document.documentElement.style.overflow = '';
+      }, 700);
+      return;
+    }
+    if (s.wa && !s.yt) setNotice('You are almost there. Now tap the YouTube channel to subscribe.');
+    else if (s.yt && !s.wa) setNotice('You are almost there. Now tap the WhatsApp channel to follow.');
+  }
+
+  function step(ch) {
+    stateRef.current[ch] = true;
+    try { localStorage.setItem('pto_gate', JSON.stringify(stateRef.current)); } catch (e) {}
+    verify();
+    setTimeout(verify, 1500);
+  }
+
+  if (!visible) return null;
+
+  return (
+    <div className="gate" id="followGate">
+      <div className="gate-box glass">
+        <img src={PROFILE_IMAGE} alt="Progress Tech" />
+        <div className="kicker">Verified access</div>
+        <h2>Follow PROGRESS TECH to enter</h2>
+        <p className="muted" style={{ margin: '12px 0 18px' }}>
+          Tap both buttons. The system verifies automatically and unlocks the site. You must follow all channels.
+        </p>
+        <a
+          className="btn btn-cyan gate-step"
+          href={WA_CHANNEL}
+          target="_blank"
+          rel="noopener"
+          onClick={() => step('wa')}
+        >
+          Follow WhatsApp Channel
+        </a>
+        <a
+          className="btn btn-gold gate-step"
+          href={YT_CHANNEL}
+          target="_blank"
+          rel="noopener"
+          onClick={() => step('yt')}
+        >
+          Subscribe YouTube Channel
+        </a>
+        <p className="tiny" style={{ marginTop: 16, color: '#ffd166' }}>{notice}</p>
+      </div>
+    </div>
+  );
+}
