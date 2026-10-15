@@ -1,0 +1,12 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^explore/?$ explore.php [L]
+RewriteRule ^academy/?$ academy.php [L]
+RewriteRule ^chatbot/?$ chatbot.php [L]
+RewriteRule ^contact/?$ contact.php [L]
+RewriteRule ^courses/?$ courses.php [L]
+</IfModule>
