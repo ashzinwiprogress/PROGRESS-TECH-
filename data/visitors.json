@@ -1,0 +1,688 @@
+[
+  {
+    "id": "v_6acd424ef2f282.45888623",
+    "ip": "129.0.78.138",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-12 20:25:50"
+  },
+  {
+    "id": "v_6acd425458ecc4.78694680",
+    "ip": "66.249.93.161",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:25:56"
+  },
+  {
+    "id": "v_6acd42a378de39.56685126",
+    "ip": "129.0.78.138",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-12 20:27:15"
+  },
+  {
+    "id": "v_6acd42a700bf91.41727806",
+    "ip": "66.249.93.162",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:27:19"
+  },
+  {
+    "id": "v_6acd42d73b4671.76379201",
+    "ip": "129.0.78.138",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-12 20:28:07"
+  },
+  {
+    "id": "v_6acd43087da322.80189817",
+    "ip": "129.0.78.138",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-12 20:28:56"
+  },
+  {
+    "id": "v_6acd430c52fbd1.76395980",
+    "ip": "74.125.210.11",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:29:00"
+  },
+  {
+    "id": "v_6acd430c82a388.06811469",
+    "ip": "64.233.172.32",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:29:00"
+  },
+  {
+    "id": "v_6acd4320bec723.03202706",
+    "ip": "129.0.78.138",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-12 20:29:20"
+  },
+  {
+    "id": "v_6acd432487b8e3.99049627",
+    "ip": "66.249.81.39",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:29:24"
+  },
+  {
+    "id": "v_6acd4325474fb0.16170761",
+    "ip": "66.249.81.32",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:29:25"
+  },
+  {
+    "id": "v_6acd432590d580.84038323",
+    "ip": "142.250.33.66",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-12 20:29:25"
+  },
+  {
+    "id": "v_6acd445c015e92.17630651",
+    "ip": "2602:fc48:916:c001:45:92:17:75",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "time": "2026-10-12 20:34:36"
+  },
+  {
+    "id": "v_6acd446c156558.34875309",
+    "ip": "2602:fc48:916:c001:45:92:17:75",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "time": "2026-10-12 20:34:52"
+  },
+  {
+    "id": "v_6acd4475f03408.44366341",
+    "ip": "2607:9000:b00:6:198:44:137:54",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "time": "2026-10-12 20:35:01"
+  },
+  {
+    "id": "v_6acd4478bed231.23959995",
+    "ip": "2607:9000:b00:6:198:44:137:54",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+    "time": "2026-10-12 20:35:04"
+  },
+  {
+    "id": "v_6acd44851f7143.09760209",
+    "ip": "2607:9000:b00:6:198:44:137:54",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "time": "2026-10-12 20:35:17"
+  },
+  {
+    "id": "v_6acd4486b25a21.51568344",
+    "ip": "2602:fc48:916:c001:45:92:17:75",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "time": "2026-10-12 20:35:18"
+  },
+  {
+    "id": "v_6acd44a61a4bf1.58639350",
+    "ip": "2607:9000:b00:6:198:44:137:54",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "time": "2026-10-12 20:35:50"
+  },
+  {
+    "id": "v_6ace44b7e2a9a0.79676622",
+    "ip": "129.0.78.186",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:48:23"
+  },
+  {
+    "id": "v_6ace44bc5acfe3.78349623",
+    "ip": "66.249.93.161",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 14:48:28"
+  },
+  {
+    "id": "v_6ace44ec99d1b8.82258381",
+    "ip": "129.0.78.186",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:49:16"
+  },
+  {
+    "id": "v_6ace44ef787320.71213335",
+    "ip": "66.249.81.32",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 14:49:19"
+  },
+  {
+    "id": "v_6ace44f0f31291.04096432",
+    "ip": "142.250.33.65",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 14:49:20"
+  },
+  {
+    "id": "v_6ace44f121d290.34861004",
+    "ip": "129.0.78.186",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:49:21"
+  },
+  {
+    "id": "v_6ace4520489c24.46564432",
+    "ip": "129.0.78.186",
+    "page": "courses",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:50:08"
+  },
+  {
+    "id": "v_6ace4524c06d49.49247399",
+    "ip": "66.249.81.33",
+    "page": "courses",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 14:50:12"
+  },
+  {
+    "id": "v_6ace452585a167.59282320",
+    "ip": "66.249.81.32",
+    "page": "courses",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 14:50:13"
+  },
+  {
+    "id": "v_6ace4525e23dd1.71129746",
+    "ip": "64.233.172.43",
+    "page": "courses",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 14:50:13"
+  },
+  {
+    "id": "v_6ace452fbda677.96527396",
+    "ip": "129.0.78.186",
+    "page": "contact",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:50:23"
+  },
+  {
+    "id": "v_6ace45359014f6.95926262",
+    "ip": "129.0.78.186",
+    "page": "about",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:50:29"
+  },
+  {
+    "id": "v_6ace455a3ab018.62407919",
+    "ip": "129.0.78.186",
+    "page": "email",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:51:06"
+  },
+  {
+    "id": "v_6ace45843c1d50.75442281",
+    "ip": "129.0.78.186",
+    "page": "academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:51:48"
+  },
+  {
+    "id": "v_6ace458ec42f86.62928643",
+    "ip": "129.0.78.186",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 14:51:58"
+  },
+  {
+    "id": "v_6ace856342ffa5.75567771",
+    "ip": "127.0.0.1",
+    "page": "home",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:24:19"
+  },
+  {
+    "id": "v_6ace8563471f39.31250680",
+    "ip": "127.0.0.1",
+    "page": "studio",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:24:19"
+  },
+  {
+    "id": "v_6ace85634a44c7.16836645",
+    "ip": "127.0.0.1",
+    "page": "chatbot",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:24:19"
+  },
+  {
+    "id": "v_6ace8637237c57.78070565",
+    "ip": "127.0.0.1",
+    "page": "home",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace8637289808.30542915",
+    "ip": "127.0.0.1",
+    "page": "studio",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace86372cd609.99499802",
+    "ip": "127.0.0.1",
+    "page": "chatbot",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace8637311e90.43834737",
+    "ip": "127.0.0.1",
+    "page": "explore",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace863736a576.59183838",
+    "ip": "127.0.0.1",
+    "page": "academy",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace86373c4d94.96276441",
+    "ip": "127.0.0.1",
+    "page": "whatsapp",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace8637419152.38067660",
+    "ip": "127.0.0.1",
+    "page": "email",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace863745a112.98986275",
+    "ip": "127.0.0.1",
+    "page": "courses",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace863749b683.16711559",
+    "ip": "127.0.0.1",
+    "page": "about",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace86374dc026.64564434",
+    "ip": "127.0.0.1",
+    "page": "contact",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:51"
+  },
+  {
+    "id": "v_6ace863fcf37e7.25759128",
+    "ip": "8.215.13.14",
+    "page": "home",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:27:59"
+  },
+  {
+    "id": "v_6ace8640134c36.77996383",
+    "ip": "8.215.13.14",
+    "page": "studio",
+    "ua": "curl/7.88.1",
+    "time": "2026-10-13 19:28:00"
+  },
+  {
+    "id": "v_6ace8b1ae0a959.53974606",
+    "ip": "129.0.78.133",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 19:48:42"
+  },
+  {
+    "id": "v_6ace8b1ed2fe11.60237177",
+    "ip": "66.249.93.170",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 19:48:46"
+  },
+  {
+    "id": "v_6ace8b271dede2.49065835",
+    "ip": "129.0.78.133",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 19:48:55"
+  },
+  {
+    "id": "v_6ace8b306d35d3.14737491",
+    "ip": "129.0.78.133",
+    "page": "studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 19:49:04"
+  },
+  {
+    "id": "v_6ace8b32f1d6a3.65766168",
+    "ip": "66.249.93.171",
+    "page": "studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 19:49:06"
+  },
+  {
+    "id": "v_6ace8b3405c1a9.19616554",
+    "ip": "66.249.93.160",
+    "page": "studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-13 19:49:08"
+  },
+  {
+    "id": "v_6ace8eb6e96757.41796513",
+    "ip": "129.0.78.133",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 20:04:06"
+  },
+  {
+    "id": "v_6ace8eb9a3df77.23915878",
+    "ip": "129.0.78.133",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-13 20:04:09"
+  },
+  {
+    "id": "v_6acfafec1dd923.60666173",
+    "ip": "129.0.78.174",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 16:38:04"
+  },
+  {
+    "id": "v_1792001929086_kehlkg",
+    "ip": "2607:9000:b00:6:198:44:137:54",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "time": "2026-10-14 18:18:49"
+  },
+  {
+    "id": "v_1792002022431_99bb94",
+    "ip": "2602:fc48:916:c001:45:92:17:75",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "time": "2026-10-14 18:20:22"
+  },
+  {
+    "id": "v_1792002033442_mjqrmw",
+    "ip": "2a02:6ea0:e224:0:121:127:42:69",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    "time": "2026-10-14 18:20:33"
+  },
+  {
+    "id": "v_1792002363362_zi3ov1",
+    "ip": "129.0.78.174",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 18:26:03"
+  },
+  {
+    "id": "v_1792002374604_z5fc8l",
+    "ip": "129.0.78.174",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 18:26:14"
+  },
+  {
+    "id": "v_1792002429508_u4b44o",
+    "ip": "129.0.78.174",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 18:27:09"
+  },
+  {
+    "id": "v_1792002449127_iz78l4",
+    "ip": "74.125.210.2",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-14 18:27:29"
+  },
+  {
+    "id": "v_1792002466180_pxp977",
+    "ip": "129.0.78.174",
+    "page": "/academy",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 18:27:46"
+  },
+  {
+    "id": "v_1792002551145_e9hen8",
+    "ip": "129.0.78.174",
+    "page": "/chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 18:29:11"
+  },
+  {
+    "id": "v_1792002695497_dt36yh",
+    "ip": "129.0.78.174",
+    "page": "/studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-14 18:31:35"
+  },
+  {
+    "id": "v_6ad10cb1b75739.67614961",
+    "ip": "129.0.78.139",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:09"
+  },
+  {
+    "id": "v_6ad10cb61f6940.90483779",
+    "ip": "66.249.81.39",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:14"
+  },
+  {
+    "id": "v_6ad10cb6d3fa54.90327310",
+    "ip": "66.249.81.32",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:14"
+  },
+  {
+    "id": "v_6ad10cb71601a8.48117049",
+    "ip": "142.250.33.73",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:15"
+  },
+  {
+    "id": "v_6ad10cc19f2901.71062540",
+    "ip": "129.0.78.139",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:25"
+  },
+  {
+    "id": "v_6ad10cc6c1f6c6.91455056",
+    "ip": "129.0.78.139",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:30"
+  },
+  {
+    "id": "v_6ad10cc9266cf2.02714060",
+    "ip": "66.249.81.32",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:33"
+  },
+  {
+    "id": "v_6ad10cc9ddfe13.57330465",
+    "ip": "66.249.81.33",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:33"
+  },
+  {
+    "id": "v_6ad10ccdb42e78.84974414",
+    "ip": "129.0.78.139",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:37"
+  },
+  {
+    "id": "v_6ad10cd2e20022.86974756",
+    "ip": "142.250.33.64",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:42"
+  },
+  {
+    "id": "v_6ad10cd4a1fe06.73437156",
+    "ip": "129.0.78.139",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:44"
+  },
+  {
+    "id": "v_6ad10cd70c3a88.36347925",
+    "ip": "66.249.81.33",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:47"
+  },
+  {
+    "id": "v_6ad10cd7c19b56.50654256",
+    "ip": "66.249.81.33",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:47"
+  },
+  {
+    "id": "v_6ad10cd8092010.46280677",
+    "ip": "64.233.172.32",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:26:48"
+  },
+  {
+    "id": "v_6ad10cdd9af8b1.70240161",
+    "ip": "129.0.78.139",
+    "page": "contact",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:53"
+  },
+  {
+    "id": "v_6ad10ce330a5b2.31393881",
+    "ip": "129.0.78.139",
+    "page": "about",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:26:59"
+  },
+  {
+    "id": "v_6ad10cf12e1694.45546336",
+    "ip": "129.0.78.139",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:13"
+  },
+  {
+    "id": "v_6ad10cf3593425.87851179",
+    "ip": "66.249.81.38",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:27:15"
+  },
+  {
+    "id": "v_6ad10cf410e536.84137984",
+    "ip": "66.249.81.32",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36 (compatible; Google-Read-Aloud; +https://support.google.com/webmasters/answer/1061943)",
+    "time": "2026-10-15 17:27:16"
+  },
+  {
+    "id": "v_6ad10cf6555a48.79300087",
+    "ip": "129.0.78.139",
+    "page": "studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:18"
+  },
+  {
+    "id": "v_6ad10cfe147749.57226327",
+    "ip": "129.0.78.139",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:26"
+  },
+  {
+    "id": "v_6ad10d021fb8b6.27409595",
+    "ip": "129.0.78.139",
+    "page": "about",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:30"
+  },
+  {
+    "id": "v_6ad10d03ce4280.13846663",
+    "ip": "129.0.78.139",
+    "page": "contact",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:31"
+  },
+  {
+    "id": "v_6ad10d05ea56a0.73062597",
+    "ip": "129.0.78.139",
+    "page": "chatbot",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:33"
+  },
+  {
+    "id": "v_6ad10d083a35e0.18836184",
+    "ip": "129.0.78.139",
+    "page": "explore",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:36"
+  },
+  {
+    "id": "v_6ad10d0a6fb052.08814472",
+    "ip": "129.0.78.139",
+    "page": "home",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:38"
+  },
+  {
+    "id": "v_1792085265936_v147ff",
+    "ip": "129.0.78.139",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:45"
+  },
+  {
+    "id": "v_1792085270053_5xey7x",
+    "ip": "129.0.78.139",
+    "page": "/studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:27:50"
+  },
+  {
+    "id": "v_1792085489009_zlba52",
+    "ip": "129.0.78.139",
+    "page": "/studio",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:31:29"
+  },
+  {
+    "id": "v_1792085511559_pxn67x",
+    "ip": "129.0.78.139",
+    "page": "/",
+    "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+    "time": "2026-10-15 17:31:51"
+  }
+]
