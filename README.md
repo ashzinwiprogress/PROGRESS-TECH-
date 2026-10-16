@@ -8,7 +8,8 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 - `/` Home
 - `/courses` 4 academies in one
 - `/academy` Cyber notes (beginner to pro), filterable by track
-- `/explore` Live arsenal published from the admin dashboard
+- `/explore` Live arsenal published from the admin dashboard (auto-refreshes, and every
+  post is pushed to the notification bell)
 - `/studio` AI Studio: chat, image, image edit, video, code/files, music
 - `/chatbot` PROGRESS TECH assistant (12 model routes)
 - `/contact`, `/contact-whatsapp`, `/contact-email`, `/about`
@@ -27,6 +28,15 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 - **Code**: upload source files or a ZIP (or describe an app). It scans/fixes code, and
   large projects are combined into a downloadable ZIP.
 - **Music**: prompt returns a playable MP3 plus lyrics, with a download button.
+
+## Notifications
+
+Every time the admin publishes an item it is stored in the data store and picked up by
+the notification bell shown in the site header. Visitors can subscribe with their email
+from the bell; they then also receive an email for each new post when `RESEND_API_KEY`
+is configured. Uploaded covers, files and videos are stored in the data store too (Vercel
+Blob when `BLOB_READ_WRITE_TOKEN` is set, otherwise `data/uploads`), so they keep working
+instead of expiring.
 
 ## Deploy to Vercel
 

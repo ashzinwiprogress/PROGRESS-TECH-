@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import crypto from 'crypto';
-import { getContent, setContent } from '../../../lib/store';
+import { getContent, setContent, saveUpload } from '../../../lib/store';
+import { notifyNewPost } from '../../../lib/notify';
 import { ADMIN_USER, ADMIN_PASS } from '../../../lib/config';
-import { uploadToPublicHost } from '../../../lib/omegatech';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -19,7 +20,19 @@ function isAdmin(req) {
 
 export async function GET() {
   const items = await getContent();
-  return NextResponse.json({ ok: true, items });
+  return NextResponse.json(
+    { ok: true, items },
+    { headers: { 'Cache-Control': 'no-store, max-age=0' } }
+  );
+}
+
+async function storeFile(file, fallbackName) {
+  if (!file || typeof file === 'string' || !file.size) return '';
+  try {
+    return await saveUpload(Buffer.from(await file.arrayBuffer()), file.name || fallbackName);
+  } catch (e) {
+    return '';
+  }
 }
 
 export async function POST(req) {
@@ -33,17 +46,10 @@ export async function POST(req) {
   const videoFile = fd.get('video');
 
   let cover = String(fd.get('cover_url') || '').trim();
-  if (!cover && coverFile && typeof coverFile !== 'string' && coverFile.size > 0) {
-    cover = await uploadToPublicHost(Buffer.from(await coverFile.arrayBuffer()), coverFile.name || 'cover');
-  }
-  let file = '';
-  if (assetFile && typeof assetFile !== 'string' && assetFile.size > 0) {
-    file = await uploadToPublicHost(Buffer.from(await assetFile.arrayBuffer()), assetFile.name || 'file');
-  }
+  if (!cover) cover = await storeFile(coverFile, 'cover');
+  const file = await storeFile(assetFile, 'file');
   let video = String(fd.get('video_url') || '').trim();
-  if (!video && videoFile && typeof videoFile !== 'string' && videoFile.size > 0) {
-    video = await uploadToPublicHost(Buffer.from(await videoFile.arrayBuffer()), videoFile.name || 'video.mp4');
-  }
+  if (!video) video = await storeFile(videoFile, 'video.mp4');
 
   const item = {
     id: 'pt_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
@@ -60,7 +66,15 @@ export async function POST(req) {
   const items = await getContent();
   items.push(item);
   await setContent(items);
-  return NextResponse.json({ ok: true, item });
+
+  try { revalidatePath('/explore'); } catch (e) {}
+  let notified = { sent: 0, skipped: true };
+  try { notified = await notifyNewPost(item); } catch (e) {}
+
+  return NextResponse.json(
+    { ok: true, item, notified: { sent: notified.sent || 0, recipients: notified.recipients || 0 } },
+    { headers: { 'Cache-Control': 'no-store, max-age=0' } }
+  );
 }
 
 export async function DELETE(req) {

@@ -65,15 +65,23 @@ function Shell({ children }) {
 function Dashboard({ onLogout }) {
   const [items, setItems] = useState([]);
   const [visitors, setVisitors] = useState([]);
+  const [subs, setSubs] = useState(0);
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
   const formRef = useRef(null);
   const [fnames, setFnames] = useState({});
 
   async function load() {
-    const r = await fetch('/api/content');
+    const r = await fetch('/api/content', { cache: 'no-store' });
     const d = await r.json();
     setItems((d.items || []).slice().reverse());
+  }
+  async function loadSubs() {
+    try {
+      const r = await fetch('/api/notify', { cache: 'no-store' });
+      const d = await r.json();
+      setSubs(d.subscribers || 0);
+    } catch (e) {}
   }
   async function loadVisitors() {
     // Visitors endpoint is admin-protected via content? We'll read from a dedicated call.
@@ -83,7 +91,7 @@ function Dashboard({ onLogout }) {
       if (d.visitors) setVisitors(d.visitors.slice().reverse());
     }
   }
-  useEffect(() => { load(); loadVisitors(); }, []);
+  useEffect(() => { load(); loadVisitors(); loadSubs(); }, []);
 
   async function add(e) {
     e.preventDefault();
@@ -94,10 +102,12 @@ function Dashboard({ onLogout }) {
       const r = await fetch('/api/content', { method: 'POST', body: fd });
       const d = await r.json();
       if (d.ok) {
-        setMsg('Added live to Explore');
+        const sent = d.notified && d.notified.sent ? d.notified.sent : 0;
+        setMsg('Added live to Explore' + (sent ? ' - notified ' + sent + ' subscriber' + (sent === 1 ? '' : 's') : ''));
         formRef.current.reset();
         setFnames({});
         load();
+        loadSubs();
       } else {
         setMsg('Error: ' + (d.error || 'could not add'));
       }
@@ -144,6 +154,7 @@ function Dashboard({ onLogout }) {
         {msg && <p className="ok" style={{ marginTop: 10 }}>{msg}</p>}
         <div className="stats">
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Published items</div><h2>{items.length}</h2></div>
+          <div className="glass" style={{ padding: 18 }}><div className="tiny">Notif. subscribers</div><h2>{subs}</h2></div>
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Visitor events</div><h2>{visitors.length}</h2></div>
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Operator</div><h2 style={{ fontSize: 22 }}>Progresstech</h2></div>
         </div>
