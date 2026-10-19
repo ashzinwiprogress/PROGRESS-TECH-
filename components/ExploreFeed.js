@@ -27,10 +27,17 @@ export default function ExploreFeed({ initialItems, query }) {
         setItems(next);
       } catch (e) { /* keep current items */ }
     }
-    const t = setInterval(tick, 15000);
+    const t = setInterval(tick, 8000);
     const onFocus = () => tick();
+    const onVisible = () => { if (document.visibilityState === 'visible') tick(); };
     window.addEventListener('focus', onFocus);
-    return () => { cancelled = true; clearInterval(t); window.removeEventListener('focus', onFocus); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      cancelled = true;
+      clearInterval(t);
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, []);
 
   const q = String(query || '').toLowerCase();

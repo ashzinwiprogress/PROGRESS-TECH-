@@ -67,10 +67,16 @@ export default function NotifyBell() {
       if (saved) { setEmail(saved); setSubscribed(true); }
     } catch (e) {}
     refresh();
-    const t = setInterval(refresh, 20000);
+    const t = setInterval(refresh, 15000);
     const onFocus = () => refresh();
+    const onVisible = () => { if (document.visibilityState === 'visible') refresh(); };
     window.addEventListener('focus', onFocus);
-    return () => { clearInterval(t); window.removeEventListener('focus', onFocus); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      clearInterval(t);
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, [refresh]);
 
   const unread = items.filter((n) => !seen.includes(n.id)).length;

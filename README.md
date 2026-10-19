@@ -29,14 +29,28 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
   large projects are combined into a downloadable ZIP.
 - **Music**: prompt returns a playable MP3 plus lyrics, with a download button.
 
-## Notifications
+## Persistence and notifications
 
-Every time the admin publishes an item it is stored in the data store and picked up by
-the notification bell shown in the site header. Visitors can subscribe with their email
-from the bell; they then also receive an email for each new post when `RESEND_API_KEY`
-is configured. Uploaded covers, files and videos are stored in the data store too (Vercel
-Blob when `BLOB_READ_WRITE_TOKEN` is set, otherwise `data/uploads`), so they keep working
-instead of expiring.
+Content, subscribers and uploaded covers/files/videos are stored through one storage
+layer:
+
+- When `BLOB_READ_WRITE_TOKEN` is available (Vercel Blob) everything is written to Blob
+  and survives restarts, redeploys and new visitors.
+- Otherwise the local `data/` directory is used (`/tmp` on Vercel, which is temporary).
+
+Both private and public Blob stores are supported automatically. Private stores are
+detected and their files are served through `/api/file/<name>`.
+
+Every time the admin publishes an item the Explore page picks it up (server render plus a
+15s client refresh) and the notification bell in the site header shows it. Visitors can
+enter their email in the bell to subscribe; when `RESEND_API_KEY` is configured they also
+receive an email for each new post.
+
+### Required environment variables on Vercel
+
+- `BLOB_READ_WRITE_TOKEN` - created automatically when you add a Blob store to the
+  project (Storage tab). Without it, content is lost between serverless invocations.
+- `RESEND_API_KEY` - optional, enables subscriber email alerts.
 
 ## Deploy to Vercel
 

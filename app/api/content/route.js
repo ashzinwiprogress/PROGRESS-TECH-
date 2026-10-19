@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import crypto from 'crypto';
-import { getContent, setContent, saveUpload } from '../../../lib/store';
+import { getContent, setContent, saveUpload, deleteUpload } from '../../../lib/store';
 import { notifyNewPost } from '../../../lib/notify';
 import { ADMIN_USER, ADMIN_PASS } from '../../../lib/config';
 
@@ -82,7 +82,12 @@ export async function DELETE(req) {
   const body = await req.json().catch(() => ({}));
   const id = String(body.id || '');
   const items = await getContent();
+  const removed = items.find((it) => it.id === id);
   const filtered = items.filter((it) => it.id !== id);
   await setContent(filtered);
+  if (removed) {
+    await Promise.all([deleteUpload(removed.cover), deleteUpload(removed.file), deleteUpload(removed.video)]);
+  }
+  try { revalidatePath('/explore'); } catch (e) {}
   return NextResponse.json({ ok: true });
 }
