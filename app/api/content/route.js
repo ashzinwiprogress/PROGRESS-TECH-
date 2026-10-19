@@ -65,7 +65,11 @@ export async function POST(req) {
 
   const items = await getContent();
   items.push(item);
-  await setContent(items);
+  try {
+    await setContent(items);
+  } catch (e) {
+    return NextResponse.json({ ok: false, error: 'Could not save. Check Blob storage on the server.' }, { status: 500 });
+  }
 
   try { revalidatePath('/explore'); } catch (e) {}
   let notified = { sent: 0, skipped: true };
