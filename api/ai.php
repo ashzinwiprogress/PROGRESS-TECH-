@@ -103,6 +103,7 @@ function omg_chat($BASE, $model, $message, $sub) {
         case 'unlimited': $url = $BASE . 'Unlimitedai?action=chat&message=' . $enc; break;
         case 'perplexity': $url = $BASE . 'perplexity-ai?prompt=' . $enc; break;
         case 'aicli': $url = $BASE . 'Aicli?action=chat&query=' . $enc . '&model=' . rawurlencode($sub ?: 'gpt'); break;
+        case 'wormgpt': $url = $BASE . 'wrmgpt?action=chat&prompt=' . $enc . '&mode=tool-explainer'; break;
         default: $url = $BASE . 'Gemini2?action=chat&message=' . $enc;
     }
     $r = omg_get($url, 90);

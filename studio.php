@@ -40,6 +40,7 @@ include __DIR__ . '/includes/header.php';
             <option value="unlimited">Unlimited AI</option>
             <option value="perplexity">Perplexity</option>
             <option value="aicli">AICLI (multi)</option>
+            <option value="wormgpt">WormGPT (education)</option>
             <option value="llama">Llama app builder (ZIP)</option>
           </select>
           <select id="studioSub" class="hidden"></select>

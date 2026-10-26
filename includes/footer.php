@@ -24,6 +24,7 @@
       <option value="unlimited">Unlimited AI</option>
       <option value="perplexity">Perplexity</option>
       <option value="aicli">AICLI</option>
+      <option value="wormgpt">WormGPT (education)</option>
       <option value="llama">Llama app builder (ZIP)</option>
     </select>
     <select id="chatSub" class="hidden"></select>

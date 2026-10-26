@@ -30,6 +30,7 @@ export default function Home() {
               <a className="btn btn-cyan" href="/academy">I don&apos;t know about cybersecurity - click me</a>
               <a className="btn btn-gold" href="/about">Contact owner</a>
               <a className="btn btn-ghost" href="/explore">Explore PROGRESS TECH HOME</a>
+              <a className="btn btn-ghost" href="/virtual-number">Free virtual numbers</a>
               <a className="btn btn-ghost" href="/studio">AI Studio</a>
             </div>
           </div>
@@ -60,6 +61,10 @@ export default function Home() {
             digital security landscape. Website building and training for beginners to pro. Python training. Linux mastery.
           </p>
           <div className="cards">
+            <a className="card glass" href="/virtual-number">
+              <h3>Free virtual numbers</h3>
+              <p>Live countries, fresh numbers, and exact OTPs pulled in real time.</p>
+            </a>
             {TRACKS.map((t) => (
               <a className="card glass" key={t[0]} href={'/academy?track=' + t[0]}>
                 <h3>{t[1]}</h3>

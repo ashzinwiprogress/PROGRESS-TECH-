@@ -15,7 +15,7 @@ export default function Nav() {
       </a>
       <div className={'nav-links' + (open ? ' open' : '')}>
         {NAV.map((n) => (
-          <a key={n.href} className={path === n.href ? 'active' : ''} href={n.href}>
+          <a key={n.href} className={path === n.href || (n.href !== '/' && path.startsWith(n.href)) ? 'active' : ''} href={n.href}>
             {n.label}
           </a>
         ))}

@@ -13,6 +13,7 @@ include __DIR__ . '/includes/header.php';
         <a class="btn btn-cyan" href="academy.php">I don't know about cybersecurity — click me</a>
         <a class="btn btn-gold" href="about.php">Contact owner</a>
         <a class="btn btn-ghost" href="explore.php">Explore PROGRESS TECH HOME</a>
+        <a class="btn btn-ghost" href="virtual-number.php">Free virtual numbers</a>
         <a class="btn btn-ghost" href="chatbot.php">Open chatbot</a>
       </div>
     </div>
@@ -36,6 +37,7 @@ include __DIR__ . '/includes/header.php';
     <h2>About Progress Tech</h2>
     <p class="muted" style="max-width:78ch;margin-bottom:28px">Explore the world of hacking and cyber security with Progress Tech. We dive into ethical hacking, penetration testing, and the latest in cyber security. Learn about Black Hat, White Hat, and Gray Hat hacking. Stay informed on threats and protection strategies. Join us for insights and updates on the digital security landscape. Website building and training for beginners to pro. Python training. Linux mastery.</p>
     <div class="cards">
+      <a class="card glass" href="virtual-number.php"><h3>Free virtual numbers</h3><p>Live countries, fresh numbers, and exact OTPs pulled in real time.</p></a>
       <a class="card glass" href="academy.php?track=cybersecurity"><h3>Cybersecurity</h3><p>Defense, threats, CIA triad, SOC mindset.</p></a>
       <a class="card glass" href="academy.php?track=ethical"><h3>Ethical hacking</h3><p>White hat methodology and labs.</p></a>
       <a class="card glass" href="academy.php?track=pentest"><h3>Penetration testing</h3><p>Recon to report, legally and cleanly.</p></a>

@@ -9,4 +9,7 @@ RewriteRule ^academy/?$ academy.php [L]
 RewriteRule ^chatbot/?$ chatbot.php [L]
 RewriteRule ^contact/?$ contact.php [L]
 RewriteRule ^courses/?$ courses.php [L]
+RewriteRule ^virtual-number/?$ virtual-number.php [L]
+RewriteRule ^virtual-number/platform/?$ virtual-number-platform.php [L]
+RewriteRule ^virtual-number/inbox/?$ virtual-number-inbox.php [L]
 </IfModule>

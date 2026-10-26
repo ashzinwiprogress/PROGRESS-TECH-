@@ -9,6 +9,7 @@ $nav = [
   'academy.php' => 'Academy',
   'explore.php' => 'Explore',
   'studio.php' => 'AI Studio',
+  'virtual-number.php' => 'Free Numbers',
   'chatbot.php' => 'Chatbot',
   'contact.php' => 'Contact',
   'about.php' => 'Owner',
@@ -41,7 +42,7 @@ $nav = [
   <button class="nav-toggle" type="button" aria-label="Menu">≡</button>
   <div class="nav-links">
     <?php foreach ($nav as $href => $label): ?>
-      <a class="<?php echo basename($_SERVER['PHP_SELF']) === $href ? 'active' : ''; ?>" href="<?php echo $href; ?>"><?php echo $label; ?></a>
+      <a class="<?php echo (basename($_SERVER['PHP_SELF']) === $href || ($href === 'virtual-number.php' && strpos(basename($_SERVER['PHP_SELF']), 'virtual-number') === 0)) ? 'active' : ''; ?>" href="<?php echo $href; ?>"><?php echo $label; ?></a>
     <?php endforeach; ?>
     <a href="admin/login.php">Admin</a>
   </div>

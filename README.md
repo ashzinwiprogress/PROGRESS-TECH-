@@ -11,6 +11,7 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 - `/explore` Live arsenal published from the admin dashboard (auto-refreshes, and every
   post is pushed to the notification bell)
 - `/studio` AI Studio: chat, image, image edit, video, code/files, music
+- `/virtual-number` Free live virtual numbers: pick country, choose platform, copy number, receive the exact OTP
 - `/chatbot` PROGRESS TECH assistant (12 model routes)
 - `/contact`, `/contact-whatsapp`, `/contact-email`, `/about`
 - `/admin` Admin dashboard (username `Progresstech`, password `progresstech12`)
@@ -18,7 +19,8 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 ## AI tools (all live via api.omegatech.app)
 
 - **Chat**: Gemini, GPT-4o mini, ChatGPT v2, Claude, Deep AI, HotBot (GPT-5),
-  Asyntai, Claude Code bot, Unlimited AI, Perplexity, AICLI, Llama app builder.
+  Asyntai, Claude Code bot, Unlimited AI, Perplexity, AICLI, WormGPT (education /
+  tool explainer), Llama app builder.
 - **Image**: Flux and Argen return a raw PNG you can view and download.
 - **Image edit**: upload a photo + prompt. Nano Banana (`Nanobana-extra`) and Flux edit
   return an edited raw PNG. The uploaded image is relayed to a temporary public host so

@@ -179,3 +179,4 @@
 .next/
 out/
 .vercel
+data/temp-number-cache.json

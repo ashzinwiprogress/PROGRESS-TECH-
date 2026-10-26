@@ -61,7 +61,7 @@ export default function Chatbot() {
           <div className="chat-head">
             <div>
               <strong>PROGRESS TECH</strong>
-              <div className="tiny">12 model routes - Gemini, GPT, Claude, DeepSeek, Llama</div>
+              <div className="tiny">13 model routes - Gemini, GPT, Claude, DeepSeek, WormGPT education, Llama</div>
             </div>
           </div>
           <div className="chat-msgs" ref={boxRef}>
@@ -86,6 +86,7 @@ export default function Chatbot() {
               <option value="unlimited">Unlimited AI</option>
               <option value="perplexity">Perplexity</option>
               <option value="aicli">AICLI</option>
+              <option value="wormgpt">WormGPT (education)</option>
               <option value="llama">Llama app builder (ZIP)</option>
             </select>
             {subList && (
