@@ -68,7 +68,7 @@ export async function POST(req) {
   try {
     await setContent(items);
   } catch (e) {
-    return NextResponse.json({ ok: false, error: 'Could not save. Check Blob storage on the server.' }, { status: 500 });
+    return NextResponse.json({ ok: false, error: 'Could not save catalog. Try again or paste a URL instead of a file.' }, { status: 500 });
   }
 
   try { revalidatePath('/explore'); } catch (e) {}

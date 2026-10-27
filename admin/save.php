@@ -10,7 +10,8 @@ function pto_store_upload($field, $prefix) {
     $safe = $prefix . '-' . date('YmdHis') . '-' . substr(md5(uniqid('', true)), 0, 8) . '.' . $ext;
     $dest = UPLOAD_PATH . '/' . $safe;
     if (!move_uploaded_file($_FILES[$field]['tmp_name'], $dest)) return '';
-    return 'data/uploads/' . $safe;
+    $public = pto_upload_public($dest, $safe);
+    return $public !== '' ? $public : ('data/uploads/' . $safe);
 }
 
 $title = trim(isset($_POST['title']) ? $_POST['title'] : '');

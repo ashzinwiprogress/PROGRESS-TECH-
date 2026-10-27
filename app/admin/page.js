@@ -221,7 +221,7 @@ function Dashboard({ onLogout }) {
 
         <section id="visitors" className="glass" style={{ padding: 20, overflow: 'auto' }}>
           <h3>Users who visited</h3>
-          <p className="tiny">Live visitor log. On Vercel this is stored in Vercel Blob when BLOB_READ_WRITE_TOKEN is set.</p>
+          <p className="tiny">Live visitor log. Explore posts are saved to the public catalog so they survive deploys without Blob.</p>
           <table className="table">
             <thead><tr><th>Time</th><th>Page</th><th>IP</th><th>Agent</th></tr></thead>
             <tbody>
