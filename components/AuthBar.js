@@ -1,33 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useAuth } from './AuthProvider';
 
 export default function AuthBar() {
-  const [user, setUser] = useState(undefined);
+  const { user, ready, logout } = useAuth();
 
-  useEffect(() => {
-    fetch('/api/auth', { cache: 'no-store' })
-      .then((r) => r.json())
-      .then((d) => setUser(d.user || null))
-      .catch(() => setUser(null));
-  }, []);
-
-  async function logout() {
-    await fetch('/api/auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'logout' })
-    });
-    setUser(null);
-    window.location.href = '/';
+  if (!ready) {
+    return <div className="auth-chip auth-chip-loading" aria-hidden="true"></div>;
   }
-
-  if (user === undefined) return null;
 
   if (!user) {
     return (
       <div className="auth-chip">
         <a className="btn btn-ghost nav-auth" href="/login">Sign in</a>
-        <a className="btn btn-cyan nav-auth" href="/register">Join academy</a>
+        <a className="btn btn-cyan nav-auth" href="/register">Join</a>
       </div>
     );
   }

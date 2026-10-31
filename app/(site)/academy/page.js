@@ -196,6 +196,27 @@ const NOTES = [
       ['Eradicate / recover', 'patch root cause, restore known-good, watch for re-entry.'],
       ['Lessons', 'timeline, gaps, control upgrades in plain language.']
     ]
+  },
+  {
+    track: 'pentest', title: 'Authorized pentest lab etiquette',
+    body: 'Students learn the job by repeating a clean loop on machines they are allowed to touch.',
+    list: [
+      ['Scope first', 'IP, domain, and test window in writing. Stop at the line.'],
+      ['Notes', 'timestamp every command on your lab VM. The report is built from notes.'],
+      ['Proof', 'one screenshot or response snippet. Not a data dump of real users.'],
+      ['Cleanup', 'revert lab changes. Leave the classroom the way you found it.']
+    ]
+  },
+  {
+    track: 'vuln', title: 'OWASP map for defenders',
+    body: 'Use the Top 10 as a checklist when you review your own app, not as an attack menu.',
+    list: [
+      ['Access control', 'every object ID is checked against the session user.'],
+      ['Injection', 'parameters, never string-built queries.'],
+      ['XSS', 'encode output. CSP as defense in depth.'],
+      ['Auth', 'MFA, lockout, rotated sessions.'],
+      ['Practice', 'OWASP cards and quizzes live in /labs.']
+    ]
   }
 ];
 

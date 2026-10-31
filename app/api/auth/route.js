@@ -10,6 +10,7 @@ import {
   isHttpsReq,
   upsertGoogleUser,
   verifyGoogleToken,
+  googleEmailUser,
   TOS_VERSION
 } from '../../../lib/auth';
 import { getUsers, setUsers, logActivity } from '../../../lib/store';
@@ -63,6 +64,18 @@ export async function POST(req) {
     if (verified.error) return json({ ok: false, error: verified.error }, 401);
     const result = await upsertGoogleUser(verified.profile);
     if (result.error) return json({ ok: false, error: result.error }, 403);
+    const out = json({ ok: true, user: publicUser(result.user) });
+    setAuthCookie(out, makeSession(result.user.id), https);
+    return out;
+  }
+
+  if (action === 'google-email') {
+    const result = await googleEmailUser({
+      email: body.email,
+      name: body.name,
+      tos: body.tos !== false
+    });
+    if (result.error) return json({ ok: false, error: result.error }, 400);
     const out = json({ ok: true, user: publicUser(result.user) });
     setAuthCookie(out, makeSession(result.user.id), https);
     return out;

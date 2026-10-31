@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
+import { useAuth } from '../../../components/AuthProvider';
 
 const TABS = [
   ['hub', 'Playground'],
@@ -14,6 +15,10 @@ const TABS = [
   ['ir', 'IR playbook'],
   ['cookies', 'Cookies'],
   ['career', 'Career'],
+  ['recon', 'Recon'],
+  ['owasp', 'OWASP'],
+  ['cvss', 'Severity'],
+  ['report', 'Report'],
   ['quiz', 'Quizzes']
 ];
 
@@ -123,14 +128,7 @@ function escapeHtml(s) {
 
 export default function Labs() {
   const [tab, setTab] = useState('hub');
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetch('/api/auth', { cache: 'no-store' })
-      .then((r) => r.json())
-      .then((d) => setUser(d.user || null))
-      .catch(() => setUser(null));
-  }, []);
+  const { user } = useAuth();
 
   return (
     <section className="section">
@@ -163,6 +161,10 @@ export default function Labs() {
         {tab === 'ir' && <IrLab />}
         {tab === 'cookies' && <CookieLab />}
         {tab === 'career' && <CareerLab />}
+        {tab === 'recon' && <ReconLab />}
+        {tab === 'owasp' && <OwaspLab />}
+        {tab === 'cvss' && <CvssLab />}
+        {tab === 'report' && <ReportLab />}
         {tab === 'quiz' && <QuizLab />}
       </div>
     </section>
@@ -182,7 +184,11 @@ function Hub({ setTab }) {
     ['ir', 'IR playbook', 'Six-step incident response you can brief to a manager.'],
     ['cookies', 'Cookie flags', 'HttpOnly, Secure, SameSite — what each flag actually blocks.'],
     ['career', 'Career path', 'eJPT, PNPT, OSCP-style roadmap without illegal shortcuts.'],
-    ['quiz', 'Academy quizzes', 'Foundations, web defense, and incident response checks.']
+    ['recon', 'Legal recon', 'OSINT checklist on your own brand. No scanning other networks.'],
+    ['owasp', 'OWASP Top 10', 'Defender cards: what it is, how it looks, how you fix it.'],
+    ['cvss', 'Severity coach', 'Practice rating impact without a payload kit.'],
+    ['report', 'Report writer', 'Turn a lab note into an executive-ready finding.'],
+    ['quiz', 'Academy quizzes', 'Foundations, web, IR, pentest methodology, OWASP.']
   ];
   return (
     <div className="cards">
@@ -204,6 +210,7 @@ function PasswordLab() {
     e.preventDefault();
     const r = await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'password', password })
     });
@@ -244,6 +251,7 @@ function HashLab() {
     e.preventDefault();
     const r = await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'hash', text })
     });
@@ -284,6 +292,7 @@ function EncodeLab() {
     setErr('');
     const r = await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'encode', text, mode })
     });
@@ -325,6 +334,7 @@ function HeaderLab() {
     e.preventDefault();
     const r = await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'headers', headers })
     });
@@ -363,6 +373,7 @@ function XssLab() {
   async function mark() {
     await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'xss-lab' })
     });
@@ -406,6 +417,7 @@ function PhishLab() {
     setScore(nextScore);
     await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'awareness', scoreKey: 'phish', score: nextScore })
     });
@@ -453,6 +465,7 @@ function WifiLab() {
     setResult({ s, t: WIFI.length });
     await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'wifi-hygiene', scoreKey: 'wifi', score: s })
     });
@@ -489,6 +502,7 @@ function CodeLab() {
     setId(next);
     await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'code', scoreKey: 'secure-code' })
     });
@@ -518,6 +532,7 @@ function IrLab() {
     setOpen(i);
     await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'ir', scoreKey: 'ir', score: i + 1 })
     });
@@ -584,6 +599,173 @@ function CareerLab() {
   );
 }
 
+function ReconLab() {
+  const items = [
+    ['Own brand', 'Google your company name + “login” and look for typosquat pages you do not control.'],
+    ['Certificates', 'Check crt.sh for your domains. Unexpected names can mean forgotten apps.'],
+    ['Public docs', 'Job posts and GitHub READMEs leak stack names. Treat that as a patching hint.'],
+    ['Cloud buckets', 'Search only names you own. Open storage is a misconfig, not a trophy.'],
+    ['Never', 'Do not run mass scanners, credential stuffing, or port sweeps on third parties.']
+  ];
+  async function mark() {
+    await fetch('/api/labs', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'recon' })
+    });
+  }
+  return (
+    <div className="glass p-tool">
+      <h3>Legal recon checklist</h3>
+      <p className="tiny">OSINT on assets you own or that a program lists in-scope. This is a reading list, not a scanner.</p>
+      <ul className="muted" style={{ paddingLeft: 18, marginTop: 14 }}>
+        {items.map((r) => (
+          <li key={r[0]} style={{ marginBottom: 8 }}><strong>{r[0]}</strong> — {r[1]}</li>
+        ))}
+      </ul>
+      <button className="btn btn-cyan" type="button" onClick={mark} style={{ marginTop: 12 }}>Mark lab complete</button>
+    </div>
+  );
+}
+
+function OwaspLab() {
+  const cards = [
+    ['A01 Access control', 'Users hitting other users’ objects. Fix: server-side ownership checks on every ID.'],
+    ['A02 Crypto', 'Plaintext secrets, MD5 passwords, HTTP. Fix: TLS, KDF, secrets manager.'],
+    ['A03 Injection', 'Untrusted input in SQL/OS/templates. Fix: parameters, allow-lists, least privilege DB.'],
+    ['A04 Insecure design', 'Business logic the scanner will miss. Fix: threat models and abuse cases.'],
+    ['A05 Misconfig', 'Default creds, debug, open buckets. Fix: hardened baselines and inventory.'],
+    ['A07 Auth', 'Session fixation, no MFA, credential stuffing. Fix: lockouts, MFA, rotated tokens.']
+  ];
+  async function seen() {
+    await fetch('/api/labs', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'owasp' })
+    });
+  }
+  return (
+    <div className="glass p-tool">
+      <h3>OWASP Top 10 — defender cards</h3>
+      <p className="tiny">Memorize the class and the control. Practice only on Juice Shop, DVWA, or your VM.</p>
+      <div className="cards" style={{ marginTop: 16 }}>
+        {cards.map((c) => (
+          <button key={c[0]} className="card glass lab-card" type="button" onClick={seen}>
+            <h3>{c[0]}</h3>
+            <p>{c[1]}</p>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CvssLab() {
+  const [av, setAv] = useState(0.6);
+  const [ac, setAc] = useState(0.4);
+  const [pr, setPr] = useState(0.6);
+  const [ui, setUi] = useState(0.4);
+  const [impact, setImpact] = useState(0.6);
+  const [out, setOut] = useState(null);
+
+  async function run(e) {
+    e.preventDefault();
+    const r = await fetch('/api/labs', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'cvss', av, ac, pr, ui, impact })
+    });
+    setOut(await r.json());
+  }
+
+  return (
+    <div className="glass p-tool">
+      <h3>Severity coach</h3>
+      <p className="tiny">A teaching slider, not official CVSS. Practice explaining why a bug is Medium vs Critical.</p>
+      <form className="form" onSubmit={run}>
+        <label>Attack vector (local 0.2 — network 1)</label>
+        <input type="range" min="0.2" max="1" step="0.2" value={av} onChange={(e) => setAv(Number(e.target.value))} />
+        <label>Attack complexity (high 0.2 — low 1)</label>
+        <input type="range" min="0.2" max="1" step="0.2" value={ac} onChange={(e) => setAc(Number(e.target.value))} />
+        <label>Privileges required (high 0.2 — none 1)</label>
+        <input type="range" min="0.2" max="1" step="0.2" value={pr} onChange={(e) => setPr(Number(e.target.value))} />
+        <label>User interaction (required 0.2 — none 1)</label>
+        <input type="range" min="0.2" max="1" step="0.2" value={ui} onChange={(e) => setUi(Number(e.target.value))} />
+        <label>Impact on confidentiality / integrity / availability</label>
+        <input type="range" min="0.2" max="1" step="0.2" value={impact} onChange={(e) => setImpact(Number(e.target.value))} />
+        <button className="btn btn-cyan" type="submit">Rate finding</button>
+      </form>
+      {out && out.ok && <p className="ok" style={{ marginTop: 12 }}>Teaching score {out.score} / 10 — {out.sev}. Always add business context in the report.</p>}
+    </div>
+  );
+}
+
+function ReportLab() {
+  const [title, setTitle] = useState('Missing authorization on invoice ID');
+  const [asset, setAsset] = useState('https://lab.local/invoices');
+  const [severity, setSeverity] = useState('High');
+  const [steps, setSteps] = useState('1. Sign in as user A on the authorized lab.\n2. Open /invoices/1001 belonging to user A.\n3. Change the id to 1002.\n4. Observe user B invoice data is returned.');
+  const [impact, setImpact] = useState('Any authenticated student can read another student’s invoices in this lab app.');
+  const [fix, setFix] = useState('Authorize object access against the session user. Add tests. Log denials.');
+  const [md, setMd] = useState('');
+  const [err, setErr] = useState('');
+
+  async function run(e) {
+    e.preventDefault();
+    setErr('');
+    const r = await fetch('/api/labs', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'report', title, asset, severity, steps, impact, fix })
+    });
+    const d = await r.json();
+    if (!d.ok) setErr(d.error || 'Could not build report');
+    else setMd(d.markdown);
+  }
+
+  function copy() {
+    if (navigator.clipboard) navigator.clipboard.writeText(md);
+  }
+
+  return (
+    <div className="glass p-tool">
+      <h3>Pentest report writer</h3>
+      <p className="tiny">Practice the professional artifact. Use fictional lab data only.</p>
+      <form className="form" onSubmit={run}>
+        <label>Title</label>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} required />
+        <label>Asset</label>
+        <input value={asset} onChange={(e) => setAsset(e.target.value)} />
+        <label>Severity</label>
+        <select value={severity} onChange={(e) => setSeverity(e.target.value)}>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+          <option>Critical</option>
+        </select>
+        <label>Steps (authorized lab)</label>
+        <textarea value={steps} onChange={(e) => setSteps(e.target.value)} required />
+        <label>Impact</label>
+        <textarea value={impact} onChange={(e) => setImpact(e.target.value)} />
+        <label>Fix</label>
+        <textarea value={fix} onChange={(e) => setFix(e.target.value)} />
+        <button className="btn btn-gold" type="submit">Generate markdown</button>
+      </form>
+      {err && <p className="err">{err}</p>}
+      {md && (
+        <div className="tool-out">
+          <pre className="code-out">{md}</pre>
+          <button className="btn btn-ghost" type="button" onClick={copy}>Copy report</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function QuizLab() {
   const [bank, setBank] = useState(null);
   const [track, setTrack] = useState('foundations');
@@ -591,7 +773,7 @@ function QuizLab() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    fetch('/api/labs')
+    fetch('/api/labs', { credentials: 'include', cache: 'no-store' })
       .then((r) => r.json())
       .then((d) => setBank(d.quizzes || null))
       .catch(() => setBank(null));
@@ -607,6 +789,7 @@ function QuizLab() {
     e.preventDefault();
     const r = await fetch('/api/labs', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tool: 'quiz', track, answers })
     });
@@ -619,7 +802,7 @@ function QuizLab() {
     <div className="glass p-tool">
       <h3>Academy quizzes</h3>
       <div className="tabs" style={{ marginTop: 12 }}>
-        {['foundations', 'web', 'ir'].map((t) => (
+        {['foundations', 'web', 'ir', 'pentest', 'owasp'].map((t) => (
           <button key={t} className={'tab' + (track === t ? ' active' : '')} type="button" onClick={() => { setTrack(t); setAnswers([]); setResult(null); }}>{t}</button>
         ))}
       </div>

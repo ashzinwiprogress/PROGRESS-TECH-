@@ -1,33 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useAuth } from '../../../components/AuthProvider';
 
 export default function Account() {
-  const [user, setUser] = useState(null);
-  const [err, setErr] = useState('');
+  const { user, ready, logout } = useAuth();
 
   useEffect(() => {
-    fetch('/api/auth', { cache: 'no-store' })
-      .then((r) => r.json())
-      .then((d) => {
-        if (!d.user) window.location.href = '/login';
-        else setUser(d.user);
-      })
-      .catch(() => setErr('Could not load account'));
-  }, []);
-
-  async function logout() {
-    await fetch('/api/auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'logout' })
-    });
-    window.location.href = '/';
-  }
+    if (ready && !user) window.location.replace('/login');
+  }, [ready, user]);
 
   if (!user) {
     return (
       <section className="section">
-        <div className="wrap"><p className="muted">{err || 'Loading account...'}</p></div>
+        <div className="wrap"><p className="muted">Loading account...</p></div>
       </section>
     );
   }

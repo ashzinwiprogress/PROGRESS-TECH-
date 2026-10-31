@@ -16,11 +16,16 @@ export default function Nav() {
       </a>
       <div className={'nav-links' + (open ? ' open' : '')}>
         {NAV.map((n) => (
-          <a key={n.href} className={path === n.href || (n.href !== '/' && path.startsWith(n.href)) ? 'active' : ''} href={n.href}>
+          <a
+            key={n.href}
+            className={path === n.href || (n.href !== '/' && path.startsWith(n.href)) ? 'active' : ''}
+            href={n.href}
+            onClick={() => setOpen(false)}
+          >
             {n.label}
           </a>
         ))}
-        <a href="/admin">Admin</a>
+        <a href="/admin" onClick={() => setOpen(false)}>Admin</a>
       </div>
       <div className="nav-right">
         <AuthBar />

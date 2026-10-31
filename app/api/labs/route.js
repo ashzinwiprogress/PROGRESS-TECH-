@@ -81,6 +81,20 @@ const QUIZ_BANK = {
     { q: 'After containment you should:', a: ['Skip evidence', 'Eradicate, recover, then lessons-learned', 'Pay any ransom immediately', 'Disable backups'], c: 1 },
     { q: 'A good severity rating includes:', a: ['Only CVSS with no context', 'Impact, exploitability, and business context', 'How angry the CEO is', 'Number of CSS files'], c: 1 },
     { q: 'Responsible disclosure means:', a: ['Dumping data publicly first', 'Reporting privately and giving time to fix', 'Selling the bug', 'Ignoring the vendor'], c: 1 }
+  ],
+  pentest: [
+    { q: 'A pentest starts with:', a: ['Firing every exploit', 'Scope, rules of engagement, written auth', 'Scanning the whole internet', 'Guessing CEO passwords'], c: 1 },
+    { q: 'Passive recon means:', a: ['Port-scanning production', 'Using only public information', 'Dropping malware', 'Brute forcing SSH'], c: 1 },
+    { q: 'A finding without impact is:', a: ['Still a critical CVE', 'Incomplete — explain business harm', 'Enough for ransom', 'A reason to DoS'], c: 1 },
+    { q: 'Out-of-scope assets should be:', a: ['Tested quietly', 'Left alone and noted', 'Sold on forums', 'Used as pivots'], c: 1 },
+    { q: 'The pentest deliverable executives read first is:', a: ['Raw nmap XML', 'The executive summary', 'Your .bashrc', 'Packet captures'], c: 1 }
+  ],
+  owasp: [
+    { q: 'A01 Broken Access Control is often:', a: ['Pretty CSS', 'IDOR / missing object checks', 'Gzip', 'Favicon theft'], c: 1 },
+    { q: 'A02 Cryptographic Failures include:', a: ['Using HTTPS everywhere', 'Plaintext passwords or weak hashes', 'HSTS preload', 'Argon2id'], c: 1 },
+    { q: 'A03 Injection is stopped by:', a: ['String concat of SQL', 'Parameterized queries / encoding', 'Disabling logs', 'MD5'], c: 1 },
+    { q: 'Security misconfiguration example:', a: ['Default admin/admin left on', 'Unique passwords', 'Least privilege', 'Patched software'], c: 0 },
+    { q: 'SSRF is dangerous because:', a: ['It styles buttons', 'The server fetches attacker-chosen URLs', 'It speeds DNS', 'It encrypts cookies'], c: 1 }
   ]
 };
 
@@ -162,7 +176,51 @@ export async function POST(req) {
     return NextResponse.json({ ok: true, ...result });
   }
 
-  if (tool === 'awareness' || tool === 'xss-lab' || tool === 'wifi-hygiene' || tool === 'ir' || tool === 'code') {
+  if (tool === 'cvss') {
+    const av = Number(body.av || 0);
+    const ac = Number(body.ac || 0);
+    const pr = Number(body.pr || 0);
+    const ui = Number(body.ui || 0);
+    const impact = Number(body.impact || 0);
+    const score = Math.min(10, Math.round((av + ac + pr + ui + impact) * 10) / 10);
+    let sev = 'None';
+    if (score >= 0.1) sev = 'Low';
+    if (score >= 4) sev = 'Medium';
+    if (score >= 7) sev = 'High';
+    if (score >= 9) sev = 'Critical';
+    if (user) await touchLab(user.id, 'cvss', 'cvss', score);
+    return NextResponse.json({ ok: true, score, sev });
+  }
+
+  if (tool === 'report') {
+    const title = String(body.title || '').slice(0, 120);
+    const asset = String(body.asset || '').slice(0, 120);
+    const steps = String(body.steps || '').slice(0, 2000);
+    const impact = String(body.impact || '').slice(0, 800);
+    const fix = String(body.fix || '').slice(0, 800);
+    if (!title || !steps) return NextResponse.json({ ok: false, error: 'Title and steps are required.' }, { status: 400 });
+    const markdown = [
+      '# Finding: ' + title,
+      '',
+      '**Asset:** ' + (asset || 'lab target'),
+      '**Severity:** ' + (body.severity || 'Medium'),
+      '',
+      '## Impact',
+      impact || 'Describe who is harmed and what data or uptime is at risk.',
+      '',
+      '## Steps to reproduce (authorized lab only)',
+      steps,
+      '',
+      '## Recommendation',
+      fix || 'Patch, add access checks, encode output, and retest.',
+      '',
+      '_Progress Tech academy — educational report template. Do not attach real victim data._'
+    ].join('\n');
+    if (user) await touchLab(user.id, 'report-writer');
+    return NextResponse.json({ ok: true, markdown });
+  }
+
+  if (tool === 'awareness' || tool === 'xss-lab' || tool === 'wifi-hygiene' || tool === 'ir' || tool === 'code' || tool === 'recon' || tool === 'owasp') {
     if (user) await touchLab(user.id, tool, body.scoreKey, Number(body.score || 0));
     return NextResponse.json({ ok: true, user: user ? publicUser(user) : null });
   }
