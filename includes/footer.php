@@ -42,6 +42,7 @@
   <div>
     <strong>PROGRESS TECH OFFICIAL</strong>
     <p class="tiny">Ethical hacking · Cybersecurity · Web · Python · Linux</p>
+    <p class="tiny"><a href="labs.php">Labs</a> · <a href="terms.php">Terms</a></p>
   </div>
   <div class="tiny">© <?php echo date('Y'); ?> Progress Tech · Cameroon</div>
 </footer>

@@ -7,6 +7,7 @@ $nav = [
   'index.php' => 'Home',
   'courses.php' => '4 in 1',
   'academy.php' => 'Academy',
+  'labs.php' => 'Labs',
   'explore.php' => 'Explore',
   'studio.php' => 'AI Studio',
   'virtual-number.php' => 'Free Numbers',

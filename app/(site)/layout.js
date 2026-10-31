@@ -20,6 +20,7 @@ export default function SiteLayout({ children }) {
         <div>
           <strong>PROGRESS TECH OFFICIAL</strong>
           <p className="tiny">Ethical hacking - Cybersecurity - Web - Python - Linux</p>
+          <p className="tiny"><a href="/labs">Labs</a> · <a href="/terms">Terms of Service</a> · <a href="/register">Register</a></p>
         </div>
         <div className="tiny">(c) {new Date().getFullYear()} Progress Tech - Cameroon</div>
       </footer>

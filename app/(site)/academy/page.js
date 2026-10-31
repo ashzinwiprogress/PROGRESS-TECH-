@@ -12,7 +12,8 @@ const TRACKS = {
   bug: 'Bug hunting',
   hats: 'Hats & hunter',
   vuln: 'Vulnerabilities',
-  tools: 'Tools beginner to pro'
+  tools: 'Tools beginner to pro',
+  ir: 'Incident response'
 };
 
 const NOTES = [
@@ -133,6 +134,68 @@ const NOTES = [
       ['Weeks 8-10', 'structured pentest reports and retest loops.'],
       ['Weeks 11-12', 'portfolio, ethics, career, bug bounty policy reading.']
     ]
+  },
+  {
+    track: 'cybersecurity', title: 'Digital hygiene checklist',
+    body: 'Most breaches start with weak habits, not movie-style hacking. Lock the human layer first.',
+    list: [
+      ['Passwords', 'unique passphrase plus a manager. Never reuse across banks and social.'],
+      ['MFA', 'app or hardware keys beat SMS when the site supports it.'],
+      ['Updates', 'OS, browser, and phone patches close the easy holes.'],
+      ['Links', 'type important domains yourself. Hover before you tap.'],
+      ['Backups', 'offline or versioned copies beat ransomware speeches.']
+    ]
+  },
+  {
+    track: 'ethical', title: 'Rules of engagement (classroom)',
+    body: 'Progress Tech labs stay inside the browser or your own VMs. That is how professionals stay employable.',
+    list: [
+      ['In scope', 'this website playground, machines you own, invited platforms.'],
+      ['Out of scope', 'cloning real login pages, stealing sessions, attacking Wi-Fi you do not own.'],
+      ['Evidence', 'screenshots and notes — never exfiltrate real user data.'],
+      ['Report', 'impact, steps, fix. Tone like a consultant, not a threat.']
+    ]
+  },
+  {
+    track: 'pentest', title: 'Writing a pentest report',
+    body: 'The report is the product. Executives fund fixes from clear writing, not tool dumps.',
+    list: [
+      ['Executive summary', 'what broke, business impact, top three actions.'],
+      ['Finding', 'title, severity, affected asset, steps, evidence, fix.'],
+      ['CVSS is a hint', 'add context: data type, exploitability, compensating controls.'],
+      ['Retest', 'schedule after the patch. Close the loop.']
+    ]
+  },
+  {
+    track: 'vuln', title: 'How defenders think about XSS',
+    body: 'XSS is untrusted data turning into browser code. Learn the sink, not a payload pack.',
+    list: [
+      ['Source', 'URL, form, comment, header reflected into HTML/JS/CSS.'],
+      ['Sink', 'innerHTML, document.write, unsafe href/javascript URLs.'],
+      ['Fix', 'encode for context, CSP, sanitizer for rich text, HttpOnly cookies.'],
+      ['Practice', 'use the XSS demo in Labs — payloads are displayed as text only.']
+    ]
+  },
+  {
+    track: 'tools', title: 'Lab playground map',
+    body: 'Open /labs for in-browser drills that never scan other people.',
+    list: [
+      ['Password gym', 'entropy and common-word checks on sample strings.'],
+      ['Hash / encode', 'see fingerprints and why Base64 is not encryption.'],
+      ['Headers', 'audit CSP, HSTS, clickjacking defenses on pasted headers.'],
+      ['Awareness', 'phish spotter, Wi-Fi hygiene, IR playbook, quizzes.']
+    ]
+  },
+  {
+    track: 'ir', title: 'Incident response in six moves',
+    body: 'When something breaks, panic is optional. A written loop is not.',
+    list: [
+      ['Prepare', 'contacts, backups, logging, roles.'],
+      ['Identify', 'confirm with logs. Do not wipe evidence.'],
+      ['Contain', 'isolate, rotate credentials, keep snapshots.'],
+      ['Eradicate / recover', 'patch root cause, restore known-good, watch for re-entry.'],
+      ['Lessons', 'timeline, gaps, control upgrades in plain language.']
+    ]
   }
 ];
 
@@ -147,6 +210,7 @@ export default function Academy({ searchParams }) {
         <h1>I don&apos;t know cybersecurity - start here</h1>
         <p className="muted" style={{ margin: '12px 0 24px' }}>
           Illustrated notes for every track. Authorized labs only. Never attack systems you do not own or have written permission to test.
+          After reading, open the <a href="/labs">defensive playground</a> and accept the <a href="/terms">Terms of Service</a>.
         </p>
         <div className="btns" style={{ marginBottom: 28 }}>
           <a className={'btn btn-ghost' + (track === 'all' ? ' btn-cyan' : '')} href="/academy">All notes</a>

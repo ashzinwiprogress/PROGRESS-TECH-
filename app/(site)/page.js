@@ -28,9 +28,9 @@ export default function Home() {
             </p>
             <div className="btns">
               <a className="btn btn-cyan" href="/academy">I don&apos;t know about cybersecurity - click me</a>
-              <a className="btn btn-gold" href="/about">Contact owner</a>
+              <a className="btn btn-gold" href="/labs">Open defensive labs</a>
+              <a className="btn btn-ghost" href="/register">Create student account</a>
               <a className="btn btn-ghost" href="/explore">Explore PROGRESS TECH HOME</a>
-              <a className="btn btn-ghost" href="/virtual-number">Free virtual numbers</a>
               <a className="btn btn-ghost" href="/studio">AI Studio</a>
             </div>
           </div>
@@ -61,6 +61,14 @@ export default function Home() {
             digital security landscape. Website building and training for beginners to pro. Python training. Linux mastery.
           </p>
           <div className="cards">
+            <a className="card glass" href="/labs">
+              <h3>Defensive playground</h3>
+              <p>Password gym, hash lab, header audit, phish spotter, quizzes. Authorized education only.</p>
+            </a>
+            <a className="card glass" href="/register">
+              <h3>Student accounts</h3>
+              <p>Register, accept Terms, save quiz scores. Admins can suspend policy violations.</p>
+            </a>
             <a className="card glass" href="/virtual-number">
               <h3>Free virtual numbers</h3>
               <p>Live countries, fresh numbers, and exact OTPs pulled in real time.</p>
@@ -84,8 +92,9 @@ export default function Home() {
             and professional ethics. Tools are taught as defensive and authorized lab skills only.
           </p>
           <div className="btns" style={{ marginTop: 20 }}>
-            <a className="btn btn-cyan" href="/contact-whatsapp">WhatsApp the owner</a>
-            <a className="btn btn-gold" href="/contact-email">Send via email</a>
+            <a className="btn btn-cyan" href="/labs">Enter playground</a>
+            <a className="btn btn-gold" href="/terms">Read Terms of Service</a>
+            <a className="btn btn-ghost" href="/contact-whatsapp">WhatsApp the owner</a>
           </div>
         </div>
       </section>

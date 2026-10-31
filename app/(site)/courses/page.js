@@ -5,7 +5,9 @@ export default function Courses() {
     ['/academy?track=cybersecurity', '01 - Cyber Defense', 'CIA triad, threats, SOC thinking, protection strategy.'],
     ['/academy?track=ethical', '02 - Ethical Ops', 'White hat labs, hats explained, hunter programs.'],
     ['/academy?track=web', '03 - Web Studio', 'Build sites, then harden them. PHP, JS, UX.'],
-    ['/academy?track=python', '04 - Script Lab', 'Python, Termux, Bash - beginner to principal.']
+    ['/academy?track=python', '04 - Script Lab', 'Python, Termux, Bash - beginner to principal.'],
+    ['/labs', '05 - Playground', 'Password, hashes, headers, XSS demo, phish spotter, IR.'],
+    ['/labs', '06 - Quizzes', 'Foundations, web defense and incident-response checks.']
   ];
   return (
     <section className="section">
@@ -23,7 +25,8 @@ export default function Courses() {
         </div>
         <div className="btns" style={{ marginTop: 28 }}>
           <a className="btn btn-cyan" href="/academy">Open all notes</a>
-          <a className="btn btn-gold" href="/explore">Live tools</a>
+          <a className="btn btn-gold" href="/labs">Open labs</a>
+          <a className="btn btn-ghost" href="/explore">Live tools</a>
         </div>
       </div>
     </section>
