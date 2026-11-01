@@ -9,7 +9,6 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 - `/courses` 4 academies in one
 - `/academy` Cyber notes (beginner to pro), filterable by track
 - `/labs` Defensive playground: password gym, hashes, encoder, headers, XSS demo, phish spotter, Wi-Fi hygiene, secure code, IR, quizzes
-- `/register` `/login` `/account` Student accounts (email + optional Google)
 - `/terms` Terms of Service (educational use, authorized testing only)
 - `/explore` Live arsenal published from the admin dashboard (auto-refreshes, and every
   post is pushed to the notification bell)
@@ -17,7 +16,7 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 - `/virtual-number` Free live virtual numbers: pick country, choose platform, copy number, receive the exact OTP
 - `/chatbot` PROGRESS TECH assistant (12 model routes)
 - `/contact`, `/contact-whatsapp`, `/contact-email`, `/about`
-- `/admin` Admin dashboard (username `Progresstech`, password `progresstech12`) — publish Explore items, review visitors, suspend/restore students
+- `/admin` Admin dashboard (username `Progresstech`, password `progresstech12`)
 
 ## AI tools (all live via api.omegatech.app)
 

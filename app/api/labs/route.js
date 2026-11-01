@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { userFromRequest, publicUser, touchLab } from '../../../lib/auth';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -120,13 +119,11 @@ export async function GET() {
 }
 
 export async function POST(req) {
-  const user = await userFromRequest(req);
   const body = await req.json().catch(() => ({}));
   const tool = String(body.tool || '');
 
   if (tool === 'password') {
     const report = passwordReport(body.password);
-    if (user) await touchLab(user.id, 'password-checker');
     return NextResponse.json({ ok: true, report });
   }
 
@@ -139,7 +136,6 @@ export async function POST(req) {
       sha256: crypto.createHash('sha256').update(text).digest('hex'),
       sha512: crypto.createHash('sha512').update(text).digest('hex')
     };
-    if (user) await touchLab(user.id, 'hash-lab');
     return NextResponse.json({ ok: true, hashes, note: 'Hashes are one-way fingerprints. They are not encryption. Use a slow KDF (scrypt/argon2) for passwords.' });
   }
 
@@ -159,20 +155,17 @@ export async function POST(req) {
     } catch (e) {
       return NextResponse.json({ ok: false, error: 'Could not decode that input.' }, { status: 400 });
     }
-    if (user) await touchLab(user.id, 'encoder');
     return NextResponse.json({ ok: true, output });
   }
 
   if (tool === 'headers') {
     const result = headerFlags(body.headers);
-    if (user) await touchLab(user.id, 'header-audit', 'headers', result.score);
     return NextResponse.json({ ok: true, ...result });
   }
 
   if (tool === 'quiz') {
     const result = gradeQuiz(body.track, body.answers);
     if (result.error) return NextResponse.json({ ok: false, error: result.error }, { status: 400 });
-    if (user) await touchLab(user.id, 'quiz-' + body.track, 'quiz-' + body.track, result.score);
     return NextResponse.json({ ok: true, ...result });
   }
 
@@ -188,7 +181,6 @@ export async function POST(req) {
     if (score >= 4) sev = 'Medium';
     if (score >= 7) sev = 'High';
     if (score >= 9) sev = 'Critical';
-    if (user) await touchLab(user.id, 'cvss', 'cvss', score);
     return NextResponse.json({ ok: true, score, sev });
   }
 
@@ -216,13 +208,11 @@ export async function POST(req) {
       '',
       '_Progress Tech academy — educational report template. Do not attach real victim data._'
     ].join('\n');
-    if (user) await touchLab(user.id, 'report-writer');
     return NextResponse.json({ ok: true, markdown });
   }
 
   if (tool === 'awareness' || tool === 'xss-lab' || tool === 'wifi-hygiene' || tool === 'ir' || tool === 'code' || tool === 'recon' || tool === 'owasp') {
-    if (user) await touchLab(user.id, tool, body.scoreKey, Number(body.score || 0));
-    return NextResponse.json({ ok: true, user: user ? publicUser(user) : null });
+    return NextResponse.json({ ok: true });
   }
 
   return NextResponse.json({ ok: false, error: 'Unknown lab tool' }, { status: 400 });

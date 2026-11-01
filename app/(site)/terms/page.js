@@ -17,12 +17,12 @@ export default function Terms() {
           <p>You may practice only on machines you own, classroom labs we provide in-browser, or platforms that explicitly invite testing (for example TryHackMe, HackTheBox, OWASP Juice Shop, bug bounty programs inside their written policy). Unauthorized access, phishing, credential harvesting, malware, Wi-Fi attacks against others, tracking people, or cloning login pages of real brands is prohibited and may be a crime.</p>
         </article>
         <article className="glass" style={{ padding: 24, marginBottom: 16 }}>
-          <h3>3. Account rules</h3>
-          <p>Provide accurate registration details. Keep your password private. You are responsible for activity on your account. Progress Tech may suspend or restore accounts for policy violations, abuse, harassment, or suspected illegal use. Suspended students lose lab access until an admin reopens the account.</p>
+          <h3>3. Access</h3>
+          <p>The public site is unlocked by following the Progress Tech WhatsApp and YouTube channels. There is no student login. Do not paste production secrets into labs.</p>
         </article>
         <article className="glass" style={{ padding: 24, marginBottom: 16 }}>
           <h3>4. What we monitor</h3>
-          <p>Admins may review registration data, lab usage counts, quiz scores, and site visit logs to protect students and enforce these terms. We do not ask you to submit real passwords from other platforms. Do not paste production secrets into labs.</p>
+          <p>Admins may review anonymous visit logs to protect the academy. We do not collect student passwords or Google emails for site access.</p>
         </article>
         <article className="glass" style={{ padding: 24, marginBottom: 16 }}>
           <h3>5. No offensive tooling</h3>
@@ -41,7 +41,7 @@ export default function Terms() {
           <p>Questions: progresstech237@gmail.com or WhatsApp +237 698 830 792. Continuing to use the site after updates means you accept the new terms.</p>
         </article>
         <div className="btns">
-          <a className="btn btn-cyan" href="/register">I agree — register</a>
+          <a className="btn btn-cyan" href="/">Back to home</a>
           <a className="btn btn-ghost" href="/contact">Contact</a>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { NAV, PROFILE_IMAGE } from '../lib/config';
 import NotifyBell from './NotifyBell';
-import AuthBar from './AuthBar';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -28,7 +27,6 @@ export default function Nav() {
         <a href="/admin" onClick={() => setOpen(false)}>Admin</a>
       </div>
       <div className="nav-right">
-        <AuthBar />
         <NotifyBell />
         <button className="nav-toggle" type="button" aria-label="Menu" onClick={() => setOpen(!open)}>
           =

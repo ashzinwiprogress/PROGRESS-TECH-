@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
-import { useAuth } from '../../../components/AuthProvider';
 
 const TABS = [
   ['hub', 'Playground'],
@@ -128,7 +127,6 @@ function escapeHtml(s) {
 
 export default function Labs() {
   const [tab, setTab] = useState('hub');
-  const { user } = useAuth();
 
   return (
     <section className="section">
@@ -140,9 +138,7 @@ export default function Labs() {
           Practice spotting threats, measuring password strength, hashing, headers, and secure coding.
         </p>
         <p className="tiny" style={{ marginBottom: 18 }}>
-          {user ? 'Signed in as ' + user.name + ' — lab runs are saved to your dossier.' : (
-            <>Guest mode works. <a href="/register">Register</a> to save scores. <a href="/terms">Terms of Service</a></>
-          )}
+          Follow-gate unlocks the site. <a href="/terms">Terms of Service</a> apply to every lab.
         </p>
         <div className="tabs">
           {TABS.map((t) => (

@@ -1,5 +1,4 @@
 import './globals.css';
-import Providers from '../components/Providers';
 
 export const metadata = {
   title: 'PROGRESS TECH OFFICIAL',
@@ -14,9 +13,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
       </head>
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

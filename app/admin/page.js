@@ -65,8 +65,6 @@ function Shell({ children }) {
 function Dashboard({ onLogout }) {
   const [items, setItems] = useState([]);
   const [visitors, setVisitors] = useState([]);
-  const [students, setStudents] = useState([]);
-  const [activity, setActivity] = useState([]);
   const [subs, setSubs] = useState(0);
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
@@ -92,27 +90,7 @@ function Dashboard({ onLogout }) {
       if (d.visitors) setVisitors(d.visitors.slice().reverse());
     }
   }
-  async function loadStudents() {
-    const r = await fetch('/api/users', { cache: 'no-store' }).catch(() => null);
-    if (r && r.ok) {
-      const d = await r.json().catch(() => ({}));
-      setStudents(d.users || []);
-      setActivity(d.activity || []);
-    }
-  }
-  useEffect(() => { load(); loadVisitors(); loadSubs(); loadStudents(); }, []);
-
-  async function studentAction(id, action) {
-    const reason = action === 'suspend' ? window.prompt('Suspend reason', 'Terms of Service violation') : '';
-    if (action === 'suspend' && reason === null) return;
-    await fetch('/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action, id, reason })
-    });
-    setMsg(action === 'suspend' ? 'Account suspended' : 'Account restored');
-    loadStudents();
-  }
+  useEffect(() => { load(); loadVisitors(); loadSubs(); }, []);
 
   async function add(e) {
     e.preventDefault();
@@ -163,8 +141,6 @@ function Dashboard({ onLogout }) {
         </div>
         <a className="active" href="#publish">Publish item</a>
         <a href="#library">Library</a>
-        <a href="#students">Students</a>
-        <a href="#activity">Activity</a>
         <a href="#visitors">Visitors</a>
         <a href="/explore" target="_blank" rel="noopener">View explore</a>
         <a href="/">Public site</a>
@@ -179,7 +155,6 @@ function Dashboard({ onLogout }) {
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Published items</div><h2>{items.length}</h2></div>
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Notif. subscribers</div><h2>{subs}</h2></div>
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Visitor events</div><h2>{visitors.length}</h2></div>
-          <div className="glass" style={{ padding: 18 }}><div className="tiny">Students</div><h2>{students.length}</h2></div>
           <div className="glass" style={{ padding: 18 }}><div className="tiny">Operator</div><h2 style={{ fontSize: 22 }}>Progresstech</h2></div>
         </div>
 
@@ -241,51 +216,6 @@ function Dashboard({ onLogout }) {
               </article>
             ))}
           </div>
-        </section>
-
-        <section id="students" className="glass" style={{ padding: 20, overflow: 'auto', marginBottom: 28 }}>
-          <h3>Registered students</h3>
-          <p className="tiny">Suspend for Terms violations. Restore later so they can continue learning. Labs are educational only.</p>
-          <table className="table">
-            <thead><tr><th>Name</th><th>Email</th><th>Provider</th><th>Labs</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody>
-              {students.length === 0 && <tr><td colSpan={6} className="tiny">No students yet.</td></tr>}
-              {students.map((s) => (
-                <tr key={s.id}>
-                  <td>{s.name}</td>
-                  <td>{s.email}</td>
-                  <td>{s.provider}</td>
-                  <td>{s.labs || 0}</td>
-                  <td>{s.suspended ? 'Suspended' : 'Active'}</td>
-                  <td>
-                    {s.suspended ? (
-                      <button className="btn btn-cyan" type="button" style={{ padding: '8px 12px' }} onClick={() => studentAction(s.id, 'restore')}>Restore</button>
-                    ) : (
-                      <button className="btn btn-ghost" type="button" style={{ padding: '8px 12px' }} onClick={() => studentAction(s.id, 'suspend')}>Suspend</button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
-
-        <section id="activity" className="glass" style={{ padding: 20, overflow: 'auto', marginBottom: 28 }}>
-          <h3>Student activity</h3>
-          <p className="tiny">Register, login, labs, quiz scores, suspend and restore events.</p>
-          <table className="table">
-            <thead><tr><th>Time</th><th>Email</th><th>Action</th><th>Detail</th></tr></thead>
-            <tbody>
-              {activity.slice(0, 80).map((a) => (
-                <tr key={a.id}>
-                  <td>{a.time}</td>
-                  <td>{a.email}</td>
-                  <td>{a.action}</td>
-                  <td className="tiny">{a.detail}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </section>
 
         <section id="visitors" className="glass" style={{ padding: 20, overflow: 'auto' }}>
