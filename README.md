@@ -13,7 +13,7 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
 - `/explore` Live arsenal published from the admin dashboard (auto-refreshes, and every
   post is pushed to the notification bell)
 - `/studio` AI Studio: chat, image, image edit, video, code/files, music
-- `/virtual-number` Free live virtual numbers: pick country, choose platform, copy number, receive the exact OTP
+- `/virtual-number` Free virtual numbers: unused lines + live countries auto-refresh, pick a platform, copy the number, OTP is pulled every 1.5s
 - `/private-numbers` Free private numbers you own: pick a country and package, provision a line, read its SMS and private email inbox
 - `/chatbot` PROGRESS TECH assistant (12 model routes)
 - `/contact`, `/contact-whatsapp`, `/contact-email`, `/about`

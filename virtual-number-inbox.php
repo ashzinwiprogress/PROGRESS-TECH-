@@ -7,7 +7,7 @@ include __DIR__ . '/includes/header.php';
   <div class="wrap">
     <div class="kicker">Step 3 · Live OTP</div>
     <h1>OTP inbox</h1>
-    <p class="muted" style="margin:12px 0 28px;max-width:72ch">Copy the number, sign in on your platform, then come back. This page keeps pulling the newest SMS for this exact number.</p>
+    <p class="muted" style="margin:12px 0 28px;max-width:72ch">Copy the number, sign in on your platform, keep this tab open. Fresh codes for this exact number are pulled every 1.5 seconds.</p>
     <div class="vn-inbox">
       <div class="vn-selected glass" id="vnSelected"></div>
       <div class="vn-otp glass" id="vnOtp">

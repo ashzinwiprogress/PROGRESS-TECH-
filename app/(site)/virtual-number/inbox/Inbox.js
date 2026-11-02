@@ -3,44 +3,57 @@
 import { useEffect, useRef, useState } from 'react';
 import { timeAgo } from '../../../../lib/tempnumber';
 
-export default function Inbox({ country, number, flag, platform, platformName }) {
+export default function Inbox({ country, number, flag, platform, platformName, unused }) {
   const [inbox, setInbox] = useState({ messages: [], latest: null });
   const [err, setErr] = useState('');
   const [copied, setCopied] = useState('');
   const [waiting, setWaiting] = useState(true);
+  const [pulls, setPulls] = useState(0);
   const seenRef = useRef('');
+  const sinceRef = useRef(unused ? Date.now() : 0);
+  const inflight = useRef(false);
 
   async function load() {
-    if (!number) return;
+    if (!number || inflight.current) return;
+    inflight.current = true;
     try {
       const r = await fetch(
-        '/api/temp-number?action=inbox&number=' + encodeURIComponent(number) + '&platform=' + encodeURIComponent(platform || 'other'),
+        '/api/temp-number?action=inbox&number=' + encodeURIComponent(number) +
+          '&platform=' + encodeURIComponent(platform || 'other') +
+          '&since=' + encodeURIComponent(sinceRef.current || 0),
         { cache: 'no-store' }
       );
       const d = await r.json();
       if (!d.ok) throw new Error(d.error || 'Inbox unavailable');
       setInbox({ messages: d.messages || [], latest: d.latest || null });
       setErr('');
+      setPulls((n) => n + 1);
       const code = d.latest && d.latest.otp;
       if (code && code !== seenRef.current) {
         seenRef.current = code;
         setWaiting(false);
+        try { await navigator.clipboard.writeText(code); setCopied('Code copied'); } catch (e) {}
       }
     } catch (e) {
       setErr(e.message || 'Could not pull SMS.');
+    } finally {
+      inflight.current = false;
     }
   }
 
   useEffect(() => {
+    sinceRef.current = unused ? Date.now() : 0;
+    seenRef.current = '';
+    setWaiting(true);
     load();
-    const t = setInterval(load, 5000);
+    const t = setInterval(load, 1500);
     const onVis = () => { if (document.visibilityState === 'visible') load(); };
     document.addEventListener('visibilitychange', onVis);
     return () => {
       clearInterval(t);
       document.removeEventListener('visibilitychange', onVis);
     };
-  }, [number, platform]);
+  }, [number, platform, unused]);
 
   async function copy(text, label) {
     try {
@@ -62,14 +75,14 @@ export default function Inbox({ country, number, flag, platform, platformName })
   }
 
   const latest = inbox.latest;
-  const qs = 'country=' + encodeURIComponent(country) + '&number=' + encodeURIComponent(number) + '&flag=' + encodeURIComponent(flag || '');
+  const qs = 'country=' + encodeURIComponent(country) + '&number=' + encodeURIComponent(number) + '&flag=' + encodeURIComponent(flag || '') + '&unused=' + (unused ? '1' : '0');
 
   return (
     <div className="vn-inbox">
       <div className="vn-selected glass">
         <span className="vn-flag">{flag}</span>
         <div>
-          <div className="tiny">{country} · {platformName}</div>
+          <div className="tiny">{country} · {platformName}{unused ? ' · unused line' : ''}</div>
           <strong className="vn-phone">{number}</strong>
         </div>
         <div className="btns">
@@ -98,9 +111,10 @@ export default function Inbox({ country, number, flag, platform, platformName })
             <div className="loader" />
             <p className="muted">
               {waiting
-                ? 'Use the copied number on ' + platformName + ', then return. Fresh codes appear here automatically.'
+                ? 'Copy the number, sign in on ' + platformName + ', then keep this tab open. Codes are pulled every 1.5s.'
                 : 'No matching code yet. Keep this tab open.'}
             </p>
+            <p className="tiny">Pulls: {pulls}</p>
             {err && <p className="err">{err}</p>}
             <button className="btn btn-ghost" type="button" onClick={load} style={{ marginTop: 12 }}>Pull now</button>
           </>

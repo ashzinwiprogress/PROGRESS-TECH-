@@ -306,7 +306,9 @@ textarea { min-height: 140px; resize: vertical; }
 .vn-flag { font-size: 28px; line-height: 1; width: 40px; text-align: center; }
 .vn-phone { font-size: 20px; letter-spacing: .04em; display: block; }
 .vn-number { flex-direction: column; align-items: flex-start; min-height: 150px; }
+.vn-number-unused { border-color: rgba(46,229,157,.45); }
 .vn-number-top { display: flex; justify-content: space-between; width: 100%; align-items: center; }
+.vn-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -8px 0 20px; }
 .vn-senders { display: block; margin-top: 6px; }
 .vn-pill {
   font-size: 11px; letter-spacing: .08em; text-transform: uppercase;

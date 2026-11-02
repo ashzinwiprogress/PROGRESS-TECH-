@@ -2,7 +2,7 @@
 
 import { PLATFORMS } from '../../../../lib/tempnumber';
 
-export default function Platforms({ country, number, flag }) {
+export default function Platforms({ country, number, flag, unused }) {
   if (!number) {
     return (
       <div className="glass p-tool">
@@ -12,7 +12,7 @@ export default function Platforms({ country, number, flag }) {
     );
   }
 
-  const qs = 'country=' + encodeURIComponent(country) + '&number=' + encodeURIComponent(number) + '&flag=' + encodeURIComponent(flag || '');
+  const qs = 'country=' + encodeURIComponent(country) + '&number=' + encodeURIComponent(number) + '&flag=' + encodeURIComponent(flag || '') + '&unused=' + (unused ? '1' : '0');
 
   return (
     <div>

@@ -7,15 +7,16 @@ export default function PlatformPage({ searchParams }) {
   const country = String((searchParams && searchParams.country) || '');
   const number = String((searchParams && searchParams.number) || '');
   const flag = String((searchParams && searchParams.flag) || '');
+  const unused = String((searchParams && searchParams.unused) || '') === '1';
   return (
     <section className="section">
       <div className="wrap">
         <div className="kicker">Step 2</div>
         <h1>Choose the platform</h1>
         <p className="muted" style={{ margin: '12px 0 28px', maxWidth: '70ch' }}>
-          You will sign this number into the app you pick. After that, open the inbox and the exact OTP for that platform is pulled live.
+          Sign this unused number into the app you pick. Then open the inbox — the OTP for that platform is pulled every 1.5 seconds.
         </p>
-        <Platforms country={country} number={number} flag={flag} />
+        <Platforms country={country} number={number} flag={flag} unused={unused} />
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ include __DIR__ . '/includes/header.php';
   <div class="wrap">
     <div class="kicker">Live SMS inbox</div>
     <h1>Free virtual numbers</h1>
-    <p class="muted" style="margin:12px 0 28px;max-width:72ch">Pick a live country. The system keeps pulling the newest numbers as they appear. Choose a number, pick the platform you are signing in to, copy the number, then come back for the exact OTP.</p>
+    <p class="muted" style="margin:12px 0 28px;max-width:72ch">Countries and unused numbers refresh by themselves. Pick an unused line that has not been signed into a platform yet, copy it, register, then stay on the inbox — the OTP is pulled every 1.5 seconds.</p>
     <div class="vn" data-ready="1">
       <div class="vn-bar glass" id="vnStats">
         <div class="tiny">Loading live numbers...</div>
@@ -17,6 +17,11 @@ include __DIR__ . '/includes/header.php';
         <button class="btn btn-ghost" type="button" id="vnRefresh">Refresh now</button>
       </div>
       <p class="err" id="vnErr"></p>
+      <div class="vn-filters" id="vnFilters">
+        <button class="tab active" type="button" data-filter="unused">Unused numbers</button>
+        <button class="tab" type="button" data-filter="live">Live / active</button>
+        <button class="tab" type="button" data-filter="all">All numbers</button>
+      </div>
       <div class="vn-split">
         <div>
           <h3 style="margin-bottom:12px">1. Choose a country</h3>

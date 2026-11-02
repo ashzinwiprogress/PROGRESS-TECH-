@@ -16,10 +16,11 @@
     return Math.floor(s / 86400) + "d ago";
   }
 
-  function freshness(ts) {
+  function freshness(ts, unused) {
+    if (unused) return { label: "Unused", cls: "vn-pill vn-pill-ok" };
     var age = Date.now() - (ts || 0);
-    if (age < 30 * 60 * 1000) return { label: "Fresh", cls: "vn-pill vn-pill-ok" };
-    if (age < 6 * 3600 * 1000) return { label: "Active", cls: "vn-pill vn-pill-gold" };
+    if (age < 10 * 60 * 1000) return { label: "Live", cls: "vn-pill vn-pill-ok" };
+    if (age < 2 * 3600 * 1000) return { label: "Active", cls: "vn-pill vn-pill-gold" };
     return { label: "Standby", cls: "vn-pill" };
   }
 
@@ -77,19 +78,22 @@
     var data = null;
     var country = "";
     var q = "";
+    var filter = "unused";
     var stats = document.getElementById("vnStats");
     var list = document.getElementById("vnCountries");
     var nums = document.getElementById("vnNumbers");
     var search = document.getElementById("vnSearch");
     var err = document.getElementById("vnErr");
     var refresh = document.getElementById("vnRefresh");
+    var filters = document.getElementById("vnFilters");
 
     function render() {
       if (!data) return;
       stats.innerHTML =
-        "<div><strong>" + data.total + "</strong><span class=\"tiny\"> live numbers</span></div>" +
+        "<div><strong>" + (data.unusedTotal || 0) + "</strong><span class=\"tiny\"> unused</span></div>" +
+        "<div><strong>" + (data.liveTotal || 0) + "</strong><span class=\"tiny\"> live</span></div>" +
         "<div><strong>" + data.countries.length + "</strong><span class=\"tiny\"> countries</span></div>" +
-        "<div class=\"tiny\">Auto-refresh every 12s · " + timeAgo(data.updated) + "</div>";
+        "<div class=\"tiny\">Auto-updates every 4s · " + timeAgo(data.updated) + "</div>";
       var term = q.trim().toLowerCase();
       var countries = data.countries.filter(function (c) {
         return !term || c.name.toLowerCase().indexOf(term) !== -1;
@@ -97,21 +101,30 @@
       list.innerHTML = countries.map(function (c) {
         return "<button type=\"button\" class=\"vn-country glass" + (country === c.name ? " active" : "") + "\" data-country=\"" + esc(c.name) + "\">" +
           "<span class=\"vn-flag\">" + esc(c.flag || "") + "</span>" +
-          "<span class=\"vn-country-meta\"><strong>" + esc(c.name) + "</strong><span class=\"tiny\">" + c.count + " numbers · " + timeAgo(c.latest) + "</span></span>" +
-          (c.hot ? "<span class=\"vn-pill vn-pill-ok\">Hot</span>" : "") +
+          "<span class=\"vn-country-meta\"><strong>" + esc(c.name) + "</strong><span class=\"tiny\">" +
+          (c.unusedCount ? c.unusedCount + " unused · " : "") +
+          (c.liveCount ? c.liveCount + " live · " : "") +
+          (c.latest ? timeAgo(c.latest) : "catalog") +
+          "</span></span>" +
+          (c.unusedCount > 0 ? "<span class=\"vn-pill vn-pill-ok\">New</span>" : (c.hot ? "<span class=\"vn-pill vn-pill-gold\">Hot</span>" : "")) +
           "</button>";
       }).join("") || "<p class=\"muted\">No countries match that search.</p>";
-      var numbers = (data.numbersByCountry && data.numbersByCountry[country]) || [];
+      var raw = (data.numbersByCountry && data.numbersByCountry[country]) || [];
+      var numbers = raw.filter(function (n) {
+        if (filter === "unused") return n.unused;
+        if (filter === "live") return n.live || (!n.unused && n.latest);
+        return true;
+      });
       nums.innerHTML = numbers.map(function (n) {
-        var f = freshness(n.latest);
-        var href = "virtual-number-platform.php?" + qs({ country: n.country, number: n.number, flag: n.flag || "" });
-        return "<a class=\"vn-number glass\" href=\"" + href + "\">" +
+        var f = freshness(n.latest, n.unused);
+        var href = "virtual-number-platform.php?" + qs({ country: n.country, number: n.number, flag: n.flag || "", unused: n.unused ? "1" : "0" });
+        return "<a class=\"vn-number glass" + (n.unused ? " vn-number-unused" : "") + "\" href=\"" + href + "\">" +
           "<div class=\"vn-number-top\"><span class=\"vn-flag\">" + esc(n.flag || "") + "</span><span class=\"" + f.cls + "\">" + f.label + "</span></div>" +
           "<strong class=\"vn-phone\">" + esc(n.number) + "</strong>" +
-          "<span class=\"tiny\">" + esc(n.country) + " · " + timeAgo(n.latest) + " · " + n.messageCount + " SMS</span>" +
-          (n.senders && n.senders.length ? "<span class=\"tiny vn-senders\">" + esc(n.senders.slice(0, 4).join(" · ")) + "</span>" : "") +
+          "<span class=\"tiny\">" + esc(n.country) + " · " + (n.unused ? "not used on any platform yet" : timeAgo(n.latest) + " · " + n.messageCount + " SMS") + "</span>" +
+          (!n.unused && n.senders && n.senders.length ? "<span class=\"tiny vn-senders\">" + esc(n.senders.slice(0, 4).join(" · ")) + "</span>" : "") +
           "</a>";
-      }).join("") || (country ? "<p class=\"muted\">No live numbers for this country yet.</p>" : "<p class=\"muted\">Select a country to see live numbers.</p>");
+      }).join("") || (country ? "<p class=\"muted\">No numbers for this filter yet. Wait for the next pull.</p>" : "<p class=\"muted\">Select a country to see numbers.</p>");
     }
 
     function load() {
@@ -122,8 +135,9 @@
           data = d;
           err.textContent = "";
           if (!country || !d.countries.some(function (c) { return c.name === country; })) {
+            var unused = d.countries.filter(function (c) { return c.unusedCount > 0; })[0];
             var hot = d.countries.filter(function (c) { return c.hot; })[0] || d.countries[0];
-            country = hot ? hot.name : "";
+            country = (unused || hot || { name: "" }).name;
           }
           render();
         })
@@ -140,8 +154,19 @@
     });
     if (search) search.addEventListener("input", function () { q = search.value; render(); });
     if (refresh) refresh.addEventListener("click", load);
+    if (filters) {
+      filters.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-filter]");
+        if (!btn) return;
+        filter = btn.getAttribute("data-filter");
+        Array.prototype.forEach.call(filters.querySelectorAll(".tab"), function (el) {
+          el.classList.toggle("active", el === btn);
+        });
+        render();
+      });
+    }
     load();
-    setInterval(load, 12000);
+    setInterval(load, 4000);
   }
 
   if (page === "platform") {
@@ -149,6 +174,7 @@
     var number = params.get("number") || "";
     var country = params.get("country") || "";
     var flag = params.get("flag") || "";
+    var unused = params.get("unused") === "1";
     var grid = document.getElementById("vnPlatforms");
     var selected = document.getElementById("vnSelected");
     if (!number) {
@@ -157,12 +183,12 @@
     }
     if (selected) {
       selected.innerHTML =
-        "<span class=\"vn-flag\">" + esc(flag) + "</span><div><div class=\"tiny\">" + esc(country) + "</div><strong class=\"vn-phone\">" + esc(number) + "</strong></div>" +
+        "<span class=\"vn-flag\">" + esc(flag) + "</span><div><div class=\"tiny\">" + esc(country) + (unused ? " · unused line" : "") + "</div><strong class=\"vn-phone\">" + esc(number) + "</strong></div>" +
         "<a class=\"btn btn-ghost\" href=\"virtual-number.php\">Change number</a>";
     }
     if (grid) {
       grid.innerHTML = PLATFORMS.map(function (p) {
-        var href = "virtual-number-inbox.php?" + qs({ country: country, number: number, flag: flag, platform: p.id });
+        var href = "virtual-number-inbox.php?" + qs({ country: country, number: number, flag: flag, unused: unused ? "1" : "0", platform: p.id });
         return "<a class=\"card glass vn-plat\" href=\"" + href + "\"><div class=\"vn-plat-mark\">" + p.name.slice(0, 2).toUpperCase() + "</div><h3>" + p.name + "</h3><p>" + p.hint + "</p></a>";
       }).join("");
     }
@@ -173,6 +199,7 @@
     var number = params.get("number") || "";
     var country = params.get("country") || "";
     var flag = params.get("flag") || "";
+    var unused = params.get("unused") === "1";
     var platform = params.get("platform") || "other";
     var plat = PLATFORMS.filter(function (p) { return p.id === platform; })[0];
     var platformName = plat ? plat.name : "Any platform";
@@ -180,14 +207,16 @@
     var otpBox = document.getElementById("vnOtp");
     var msgs = document.getElementById("vnMsgs");
     var copyNum = document.getElementById("vnCopyNum");
+    var since = unused ? Date.now() : 0;
+    var inflight = false;
     if (!number) {
       if (otpBox) otpBox.innerHTML = "<p class=\"err\">No number selected.</p><a class=\"btn btn-cyan\" href=\"virtual-number.php\">Choose a number</a>";
       return;
     }
-    var baseQs = qs({ country: country, number: number, flag: flag });
+    var baseQs = qs({ country: country, number: number, flag: flag, unused: unused ? "1" : "0" });
     if (selected) {
       selected.innerHTML =
-        "<span class=\"vn-flag\">" + esc(flag) + "</span><div><div class=\"tiny\">" + esc(country) + " · " + esc(platformName) + "</div><strong class=\"vn-phone\">" + esc(number) + "</strong></div>" +
+        "<span class=\"vn-flag\">" + esc(flag) + "</span><div><div class=\"tiny\">" + esc(country) + " · " + esc(platformName) + (unused ? " · unused line" : "") + "</div><strong class=\"vn-phone\">" + esc(number) + "</strong></div>" +
         "<div class=\"btns\">" +
         "<button class=\"btn btn-cyan\" type=\"button\" id=\"vnCopyNum\">Copy number</button>" +
         "<a class=\"btn btn-ghost\" href=\"virtual-number-platform.php?" + baseQs + "\">Change platform</a>" +
@@ -213,7 +242,7 @@
         otpBox.className = "vn-otp glass";
         otpBox.innerHTML =
           "<div class=\"kicker\">Waiting for SMS</div><div class=\"loader\"></div>" +
-          "<p class=\"muted\">Use the copied number on " + platformName + ", then return. Fresh codes appear here automatically.</p>" +
+          "<p class=\"muted\">Copy the number, sign in on " + platformName + ", then keep this tab open. Codes are pulled every 1.5s.</p>" +
           "<button class=\"btn btn-ghost\" type=\"button\" id=\"vnPull\" style=\"margin-top:12px\">Pull now</button>";
       }
       var pull = document.getElementById("vnPull");
@@ -226,7 +255,9 @@
     }
 
     function load() {
-      fetch("api/temp-number.php?action=inbox&" + qs({ number: number, platform: platform }), { cache: "no-store" })
+      if (inflight) return;
+      inflight = true;
+      fetch("api/temp-number.php?action=inbox&" + qs({ number: number, platform: platform, since: since }), { cache: "no-store" })
         .then(function (r) { return r.json(); })
         .then(function (d) {
           if (!d.ok) throw new Error(d.error || "Inbox unavailable");
@@ -236,9 +267,10 @@
           otpBox.innerHTML = "<p class=\"err\">" + (e.message || "Could not pull SMS.") + "</p><button class=\"btn btn-ghost\" type=\"button\" id=\"vnPull\">Pull now</button>";
           var pull = document.getElementById("vnPull");
           if (pull) pull.addEventListener("click", load);
-        });
+        })
+        .then(function () { inflight = false; });
     }
     load();
-    setInterval(load, 5000);
+    setInterval(load, 1500);
   }
 })();
