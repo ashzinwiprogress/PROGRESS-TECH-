@@ -11,6 +11,7 @@ $nav = [
   'explore.php' => 'Explore',
   'studio.php' => 'AI Studio',
   'virtual-number.php' => 'Free Numbers',
+  'private-numbers.php' => 'Private Numbers',
   'chatbot.php' => 'Chatbot',
   'contact.php' => 'Contact',
   'about.php' => 'Owner',

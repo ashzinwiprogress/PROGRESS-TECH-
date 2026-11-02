@@ -14,6 +14,7 @@ Luxury ocean-glass UI with animated water motion, built on Next.js for Vercel.
   post is pushed to the notification bell)
 - `/studio` AI Studio: chat, image, image edit, video, code/files, music
 - `/virtual-number` Free live virtual numbers: pick country, choose platform, copy number, receive the exact OTP
+- `/private-numbers` Free private numbers you own: pick a country and package, provision a line, read its SMS and private email inbox
 - `/chatbot` PROGRESS TECH assistant (12 model routes)
 - `/contact`, `/contact-whatsapp`, `/contact-email`, `/about`
 - `/admin` Admin dashboard (username `Progresstech`, password `progresstech12`)

@@ -69,6 +69,10 @@ export default function Home() {
               <h3>Free virtual numbers</h3>
               <p>Live countries, fresh numbers, and exact OTPs pulled in real time.</p>
             </a>
+            <a className="card glass" href="/private-numbers">
+              <h3>Free private numbers</h3>
+              <p>Provision a line you own, keep it for the package duration, read SMS and the private email inbox.</p>
+            </a>
             {TRACKS.map((t) => (
               <a className="card glass" key={t[0]} href={'/academy?track=' + t[0]}>
                 <h3>{t[1]}</h3>
